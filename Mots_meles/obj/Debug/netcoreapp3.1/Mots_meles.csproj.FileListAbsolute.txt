@@ -1,0 +1,12 @@
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/bin/Debug/netcoreapp3.1/Mots_meles.deps.json
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/bin/Debug/netcoreapp3.1/Mots_meles.runtimeconfig.json
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/bin/Debug/netcoreapp3.1/Mots_meles.runtimeconfig.dev.json
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/bin/Debug/netcoreapp3.1/Mots_meles.dll
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/bin/Debug/netcoreapp3.1/Mots_meles.pdb
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.csprojAssemblyReference.cache
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.AssemblyInfoInputs.cache
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.AssemblyInfo.cs
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.csproj.CoreCompileInputs.cache
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.dll
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.pdb
+/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/Debug/netcoreapp3.1/Mots_meles.genruntimeconfig.cache
