@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}|Default">
   <MonoDevelop.Ide.ItemProperties.Mots__meles PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mots_meles/Joueur.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mots_meles/Plateau.cs">
     <Files>
       <File FileName="Mots_meles/Program.cs" Line="13" Column="29" />
-      <File FileName="Mots_meles/Joueur.cs" Line="48" Column="43" />
-      <File FileName="Mots_meles/Dictionnaire.cs" Line="7" Column="1" />
+      <File FileName="Mots_meles/Joueur.cs" />
+      <File FileName="Mots_meles/Dictionnaire.cs" Line="55" Column="34" />
+      <File FileName="Mots_meles/Plateau.cs" Line="32" Column="77" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Mots_meles" expanded="True">
             <Node name="Mots_meles" expanded="True">
-              <Node name="Joueur.cs" selected="True" />
+              <Node name="Plateau.cs" selected="True" />
             </Node>
           </Node>
         </State>
