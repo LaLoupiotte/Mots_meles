@@ -10,7 +10,7 @@ namespace Mots_meles
             num1.ToString();
             num1.Add_Score(45);
             num1.Add_Mot("Hello");
-            num1.ToString();
+            Console.WriteLine(num1.ToString());
         }
     }
 }

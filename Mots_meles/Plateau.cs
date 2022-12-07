@@ -8,7 +8,7 @@ namespace Mots_meles
         private int nbLignes;
         private string[] mots;
         private string[] directions = new string[] { "N", "S", "E", "O", "NE", "NO", "SE", "SO" };
-
+        private char[,] tableau;
         
 
         public Plateau()
@@ -30,6 +30,46 @@ namespace Mots_meles
                 int colonne = rand.Next(nbColonnes);
                 int ligne = rand.Next(nbLignes);
                 string direction = directions[rand.Next(directions.Length)];
+            }
+        }
+
+        private void rempliN(int x, int y, string mot)
+        {
+            int cont = 0;
+            for(int i = y; i < y+mot.Length; i++)
+            {
+                this.tableau[x, i] = mot[cont];
+                cont += 1;
+            }
+        }
+
+        private void rempliS(int x, int y, string mot)
+        {
+            int cont = 0;
+            for(int i = y; i > y-mot.Length; i--)
+            {
+                this.tableau[x, i] = mot[cont];
+                cont += 1;
+            }
+        }
+
+        private void rempliO(int x, int y, string mot)
+        {
+            int cont = 0;
+            for (int i = x; i > x - mot.Length; i--)
+            {
+                this.tableau[i, y] = mot[cont];
+                cont += 1;
+            }
+        }
+
+        private void rempliE(int x, int y, string mot)
+        {
+            int cont = 0;
+            for (int i = x; i > y - mot.Length; i--)
+            {
+                this.tableau[i, y] = mot[cont];
+                cont += 1;
             }
         }
 
