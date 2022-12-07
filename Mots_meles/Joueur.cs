@@ -71,10 +71,10 @@ namespace Mots_meles
             return res;
         }
 
-        public void ToString()
+        public string ToString()
         {
             string res = "nom : " + this.nom + " score : " + this.score + " mots trouvés : " + MotsTrouvesText();
-            Console.WriteLine(res);
+            return res;
         }
     }
 }

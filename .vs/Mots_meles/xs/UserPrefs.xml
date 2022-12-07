@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Mots_meles/Program.cs" Line="13" Column="29" />
       <File FileName="Mots_meles/Joueur.cs" />
-      <File FileName="Mots_meles/Dictionnaire.cs" Line="55" Column="34" />
+      <File FileName="Mots_meles/Dictionnaire.cs" />
       <File FileName="Mots_meles/Plateau.cs" Line="32" Column="77" />
     </Files>
     <Pads>
