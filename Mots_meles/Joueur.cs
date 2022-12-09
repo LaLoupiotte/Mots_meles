@@ -7,7 +7,6 @@ namespace Mots_meles
         private int score;
         private string nom;
 
-
         public Joueur(string nom)
         {
             /*Ce constructeur est utilisé si le joueur vient de lancer la partie, la liste
@@ -26,9 +25,9 @@ namespace Mots_meles
         }
 
         public Joueur(string nom, int score, string[] motsTrouves)
-            /*Ce constructeur est utilisé si le joueur reprend une partie, la liste 
-             *de mots trouvés possède déjà des élements
-             */
+        /*Ce constructeur est utilisé si le joueur reprend une partie, la liste 
+         *de mots trouvés possède déjà des élements
+         */
         {
             this.nom = nom;
             this.score = score;
