@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 /*
          * 
@@ -81,37 +82,44 @@ namespace Mots_meles
         private char[,] grid;
         private string langue;
         private string[] directions;
+        private int width;
+        private int heigth;
 
         public Plateau(int difficulte, string langue)
         {
-            //Constructeur par default avec ces mots par defauts
-            //On utilise se constructeur en tant que brouillon
             this.difficulte = difficulte;
             this.langue = langue;
-            int length = 13;
-            int heigth = 7;
-            char[,] grid = new char[heigth, length];
-
             switch (difficulte)
             {
                 case 1:
-                    this.directions = new string[] { "S", "O"};
+                    this.directions = new string[] { "S", "O" };
+                    this.heigth = 7;
+                    this.width = 13;
                     break;
                 case 2:
                     this.directions = new string[] { "S", "O", "N", "E" };
+                    this.heigth = 7;
+                    this.width = 13;
                     break;
                 case 3:
                     this.directions = new string[] { "S", "O", "N", "E", "SO", "NE" };
+                    this.heigth = 7;
+                    this.width = 13;
                     break;
                 case 4:
                     this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
+                    this.heigth = 7;
+                    this.width = 13;
                     break;
             }
+            char[,] grid = new char[this.heigth, this.width];
+
+            
 
             // Initialise the grid with empty spaces
             for (int i = 0; i < heigth; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < width; j++)
                 {
                     grid[i, j] = ' ';
                 }
@@ -122,13 +130,14 @@ namespace Mots_meles
             int cont = 0;
             while(cont < 10)
             {
+                string[] words = new string[] { "qhs fgo ", "qskjhflahkdf"};
                 string word = words[rnd.Next(0, 10)];
-                int x = rnd.Next(0, length);
+                int x = rnd.Next(0, width);
                 int y = rnd.Next(0, heigth);
                 int directionIndice = rnd.Next(0, 8);
 
                 // Check if the word fits in the grid
-                if (CheckWord(x, y, word, this.directions[directionIndice], grid, length, heigth))
+                if (CheckWord(x, y, word, this.directions[directionIndice], grid, width, heigth))
                 {
                     InsertWord(x, y, word, this.directions[directionIndice], grid);
                     Console.WriteLine("Word '{0}' starts at {1}, {2} and goes {3}", word, x, y, directions[directionIndice]);
@@ -140,7 +149,7 @@ namespace Mots_meles
             // Fill the empty spaces with random characters
             for (int i = 0; i < heigth; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < width; j++)
                 {
                     if (grid[i, j] == ' ')
                     {
@@ -152,7 +161,7 @@ namespace Mots_meles
             // Print the grid
             for (int i = 0; i < heigth; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < width; j++)
                 {
                     Console.Write(grid[i, j]);
                 }
@@ -160,6 +169,17 @@ namespace Mots_meles
             }
 
             Console.ReadLine();
+        }
+
+
+        public static string[] ReadFile(string filePath, int )
+        {
+
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
         }
 
 
@@ -210,11 +230,11 @@ namespace Mots_meles
             }
         }
 
-        public bool CheckWord(int x, int y, string word, string direction, char[,] grid, int length, int height)
+        public bool CheckWord(int x, int y, string word, string direction, char[,] grid, int width, int height)
         {
             for (int i = 0; i < word.Length; i++)
             {
-                if (x < 0 || x > height-1 || y < 0 || y > length-1)
+                if (x < 0 || x > height-1 || y < 0 || y > width-1)
                 {
                     return false;
                 }
