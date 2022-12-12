@@ -26,10 +26,17 @@ namespace Mots_meles
                 tab_joueurs[0]=new Joueur(Console.ReadLine());
             }
 
-            Console.WriteLine(" Saisir une langue : \n FR : Francais\n AN : Anglais"); //saisie de la langue du dico
-            langue_dic=Console.ReadLine();
+            do
+            {
+                Console.WriteLine(" Saisir une langue : \n FR : Francais\n AN : Anglais"); //saisie de la langue du dico
+                langue_dic=Console.ReadLine();
+            }while(langue_dic!="FR" || langue_dic!="AN");
+            
 
-            //Plateau plat = new Plateau();
+
+            ///LANCEMENT D UNE PARTIE
+            ///
+
         }
     }
 }
