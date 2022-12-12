@@ -54,7 +54,14 @@ namespace Mots_meles
         {
             this.difficulte = difficulte;
             this.langue = langue;
-            this.words = ReadFile("fichiersTexte/MotsPossiblesFR.txt", difficulte);
+            if (langue == "EN")
+            {
+                this.words = ReadFile("fichiersTexte/MotsPossiblesEN.txt", difficulte);
+            }
+            else
+            {
+                this.words = ReadFile("fichiersTexte/MotsPossiblesFR.txt", difficulte);
+            }
         }
 
         public override string ToString()

@@ -15,7 +15,7 @@ namespace Mots_meles
 
             //Affichage menu + saisie des caractéristiques des joueurs 
             int nb_joueur;
-            diff = 0; //remise à 0 de la difficulté
+            diff = 1; //remise à 0 de la difficulté
 
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n");
             do
@@ -49,7 +49,29 @@ namespace Mots_meles
 
             ///LANCEMENT D UNE PARTIE
             ///
-            //plateau = new Plateau(diff, langue_dic);
+            plateau = new Plateau(diff, langue_dic);
+            char[,] grille = plateau.Grid;
+
+            char[][,] grilles = new char[5][,];
+            int cont = 0;
+            for(int i=0; i<grilles.Length; i++)
+            {
+                if (cont <= 4) { cont += 1; }
+                grilles[i] = new Plateau(cont, "EN").Grid;
+            }
+
+            for(int i = 0; i<grilles.Length; i++)
+            {
+                for(int j = 0; j < grilles[i].GetLength(0); j++)
+                {
+                    for(int k = 0; k < grilles[i].GetLength(1); k++)
+                    {
+                        Console.Write(grilles[i][j, k]);
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine("-------------");
+            }
 
 
         }
