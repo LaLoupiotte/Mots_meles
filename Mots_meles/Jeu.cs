@@ -3,31 +3,32 @@ namespace Mots_meles
 {
 	public class Jeu
 	{
+        private Joueur[] tab_joueurs;
+        private string langue_dic;
 		public Jeu()
 		{
-            //déclarations
-            int nb_joueur = 0;
-            Joueur[] tab_joueurs = new Joueur[nb_joueur];
+
             string langue_dic = null;
             string nom_temp = null;
 
             //Affichage menu + saisie des caractéristiques des joueurs 
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n");
+            int nb_joueur;
             do
             {
                 Console.WriteLine("\nInserer le nombre de joueurs ");
                 nb_joueur = int.Parse(Console.ReadLine()); //saisie par le joueur du nb de joueurs
-            } while (nb_joueur < 0 || nb_joueur == 0);
+            }while (nb_joueur < 0 || nb_joueur == 0);
+
+            tab_joueurs = new Joueur[nb_joueur];
 
             Console.WriteLine("Vous avez selectionne " + nb_joueur + " joueurs");
 
             for (int i = 0; i < nb_joueur; i++) //remplissage du tableau de joueur
             {
                 Console.WriteLine("\nSaisir le nom du joueur " + (i + 1));
-                nom_temp = Console.ReadLine();
-                Console.WriteLine(nom_temp);
 
-                //tab_joueurs[i] = new Joueur(nom_temp);
+                tab_joueurs[i] = new Joueur(Console.ReadLine());
             }
 
             do
