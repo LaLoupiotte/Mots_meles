@@ -42,7 +42,7 @@ namespace Mots_meles
 
             for (int i=0; i<nb_joueur; i++)
             {
-                Console.WriteLine("\nJoueur " + i + "\n" + tab_joueurs[i].ToString());
+                Console.WriteLine("\nJOUEUR" + (i+1) + "\n" + tab_joueurs[i].ToString());
 
             }
 
@@ -50,6 +50,8 @@ namespace Mots_meles
             ///LANCEMENT D UNE PARTIE
             ///
             //plateau = new Plateau(diff, langue_dic);
+
+
         }
     }
 }
