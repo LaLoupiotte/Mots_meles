@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 
 /*
          * 
@@ -79,17 +80,27 @@ namespace Mots_meles
     public class Plateau
     {
         private int difficulte;
-        private string[] mots;
+        private string[] words;
         private char[,] grid;
         private string langue;
         private string[] directions;
         private int width;
         private int heigth;
 
+        public char[,] Grid
+        {
+            get { return this.grid; }
+        }
+
         public Plateau(int difficulte, string langue)
         {
             this.difficulte = difficulte;
             this.langue = langue;
+            List<string> words = new List<string>();
+            for (int i = 2; i < 15; i++)
+            {
+                words.AddRange(new Dictionnaire(i, langue).Words);
+            }
             
             switch (difficulte)
             {
@@ -113,6 +124,11 @@ namespace Mots_meles
                     this.heigth = 7;
                     this.width = 13;
                     break;
+                default:
+                    this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
+                    this.heigth = 7;
+                    this.width = 13;
+                    break;
             }
             char[,] grid = new char[this.heigth, this.width];
 
@@ -130,10 +146,10 @@ namespace Mots_meles
             // Randomly insert words
             Random rnd = new Random();
             int cont = 0;
-            while(cont < 10)
+            while (cont < 10)
             {
-                string[] words = ReadFile("../../../wordFiles/MotsPossiblesFR.txt", difficulte);
-                string word = words[rnd.Next(0, words.Length-1)];
+                
+                string word = words[rnd.Next(0, words.Count-1)];
                 int x = rnd.Next(0, width);
                 int y = rnd.Next(0, heigth);
                 int directionIndice = rnd.Next(0, directions.Length);
@@ -169,46 +185,7 @@ namespace Mots_meles
                 }
                 Console.WriteLine();
             }
-
-            Console.ReadLine();
         }
-
-
-        public static string[] ReadFile(string filePath, int difficulte)
-        {
-            bool flag = false;
-            ArrayList words = new ArrayList();
-            try
-            {
-                string text = File.ReadAllText(filePath);
-                words.AddRange(text.Split(' '));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
-            int start = words.IndexOf(difficulte);
-            int end;
-            string[] wordsRes = new string[words.Count];
-            if(difficulte == 4)
-            {
-                end = words.Count - 1;
-            }
-            else
-            {
-                end = words.IndexOf(difficulte + 1);
-            }
-            for(int i = 0; i < words.Count; i++)
-            {
-                wordsRes[i] = (string)words[i];
-            }
-            
-            return wordsRes;
-        }
-
-    
-
 
         public void InsertWord(int x, int y, string word, string direction, char[,] grid)
         {
