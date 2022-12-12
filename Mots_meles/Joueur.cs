@@ -72,7 +72,7 @@ namespace Mots_meles
 
         public string ToString()
         {
-            string res = "nom : " + this.nom + " score : " + this.score + " mots trouvés : " + MotsTrouvesText();
+            string res = "Nom : " + this.nom + "\nScore : " + this.score + "\nMots trouvés : " + MotsTrouvesText();
             return res;
         }
     }
