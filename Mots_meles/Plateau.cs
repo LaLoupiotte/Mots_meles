@@ -1,19 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Mots_meles
-{
-    public class Plateau
-    {
-        private int difficulte;
-        private int nbColonnes;
-        private int nbLignes;
-        private string[] mots;
-        private char[,] tableau;
-
-
-
-        /*
+/*
          * 
          * 
         private string[,] matriceFromMots(string[] mots, int difficulte = 1)
@@ -84,20 +75,69 @@ namespace Mots_meles
          * 
          */
 
-        public Plateau()
+namespace Mots_meles
+{
+    public class Plateau
+    {
+        private int difficulte;
+        private string[] words;
+        private char[,] grid;
+        private string langue;
+        private string[] directions;
+        private int width;
+        private int heigth;
+
+        public char[,] Grid
         {
-            //Constructeur par default avec ces mots par defauts
-            //On utilise se constructeur en tant que brouillon
-            string[] words = new string[] { "apple", "banana", "grapes", "strawberry", "orange", "mango", "kiwi", "plum", "pear", "apricot" };
-            string[] directions = new string[] { "N", "O", "S", "E", "SO", "SE", "NO", "NE" };
-            int length = 13;
-            int heigth = 7;
-            char[,] grid = new char[heigth, length];
+            get { return this.grid; }
+        }
+
+        public Plateau(int difficulte, string langue)
+        {
+            this.difficulte = difficulte;
+            this.langue = langue;
+            List<string> words = new List<string>();
+            for (int i = 2; i < 15; i++)
+            {
+                words.AddRange(new Dictionnaire(i, langue).Words);
+            }
+            
+            switch (difficulte)
+            {
+                case 1:
+                    this.directions = new string[] { "S", "O" };
+                    this.heigth = 7;
+                    this.width = 13;
+                    break;
+                case 2:
+                    this.directions = new string[] { "S", "O", "N", "E" };
+                    this.heigth = 7;
+                    this.width = 13;
+                    break;
+                case 3:
+                    this.directions = new string[] { "S", "O", "N", "E", "SO", "NE" };
+                    this.heigth = 7;
+                    this.width = 13;
+                    break;
+                case 4:
+                    this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
+                    this.heigth = 7;
+                    this.width = 13;
+                    break;
+                default:
+                    this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
+                    this.heigth = 7;
+                    this.width = 13;
+                    break;
+            }
+            char[,] grid = new char[this.heigth, this.width];
+
+            
 
             // Initialise the grid with empty spaces
             for (int i = 0; i < heigth; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < width; j++)
                 {
                     grid[i, j] = ' ';
                 }
@@ -105,25 +145,29 @@ namespace Mots_meles
 
             // Randomly insert words
             Random rnd = new Random();
-            for (int i = 0; i < heigth; i++)
+            int cont = 0;
+            while (cont < 10)
             {
-                string word = words[rnd.Next(0, 10)];
-                int x = rnd.Next(0, length);
+                
+                string word = words[rnd.Next(0, words.Count-1)];
+                int x = rnd.Next(0, width);
                 int y = rnd.Next(0, heigth);
-                int directionIndice = rnd.Next(0, 8);
+                int directionIndice = rnd.Next(0, directions.Length);
 
                 // Check if the word fits in the grid
-                if (CheckWord(x, y, word, directions[directionIndice], grid, length, heigth))
+                if (CheckWord(x, y, word, this.directions[directionIndice], grid, width, heigth))
                 {
-                    InsertWord(x, y, word, directions[directionIndice], grid);
+                    InsertWord(x, y, word, this.directions[directionIndice], grid);
                     Console.WriteLine("Word '{0}' starts at {1}, {2} and goes {3}", word, x, y, directions[directionIndice]);
+                    cont += 1;
                 }
+
             }
 
             // Fill the empty spaces with random characters
             for (int i = 0; i < heigth; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < width; j++)
                 {
                     if (grid[i, j] == ' ')
                     {
@@ -135,16 +179,13 @@ namespace Mots_meles
             // Print the grid
             for (int i = 0; i < heigth; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < width; j++)
                 {
                     Console.Write(grid[i, j]);
                 }
                 Console.WriteLine();
             }
-
-            Console.ReadLine();
         }
-
 
         public void InsertWord(int x, int y, string word, string direction, char[,] grid)
         {
@@ -153,38 +194,38 @@ namespace Mots_meles
                 grid[x, y] = char.ToUpper(word[i]);
                 switch (direction)
                 {
-                    // Left
+                    // Est
                     case "E":
                         y--;
                         break;
-                    // Left-Up
+                    // Nord Est
                     case "NE":
                         y--;
                         x--;
                         break;
-                    // Up
+                    // Nord
                     case "N":
                         x--;
                         break;
-                    // Right-Up
+                    // Nord Ouest
                     case "NO":
                         y++;
                         x--;
                         break;
-                    // Right
+                    // Ouest
                     case "O":
                         y++;
                         break;
-                    // Right-Down
+                    // Sud Ouest
                     case "SO":
                         y++;
                         x++;
                         break;
-                    // Down
+                    // Sud
                     case "S":
                         x++;
                         break;
-                    // Left-Down
+                    // Sud Est
                     case "SE":
                         y--;
                         x++;
@@ -193,11 +234,11 @@ namespace Mots_meles
             }
         }
 
-        public bool CheckWord(int x, int y, string word, string direction, char[,] grid, int length, int height)
+        public bool CheckWord(int x, int y, string word, string direction, char[,] grid, int width, int height)
         {
             for (int i = 0; i < word.Length; i++)
             {
-                if (x < 0 || x > height-1 || y < 0 || y > length-1)
+                if (x < 0 || x > height-1 || y < 0 || y > width-1)
                 {
                     return false;
                 }
@@ -207,38 +248,38 @@ namespace Mots_meles
                 }
                 switch (direction)
                 {
-                    // Left
+                    // Est
                     case "E":
                         y--;
                         break;
-                    // Left-Up
+                    // Nord Est
                     case "NE":
                         y--;
                         x--;
                         break;
-                    // Up
+                    // Nord
                     case "N":
                         x--;
                         break;
-                    // Right-Up
+                    // Nord Ouest
                     case "NO":
                         y++;
                         x--;
                         break;
-                    // Right
+                    // Ouest
                     case "O":
                         y++;
                         break;
-                    // Right-Down
+                    // Sud Ouest
                     case "SO":
                         y++;
                         x++;
                         break;
-                    // Down
+                    // Sud
                     case "S":
                         x++;
                         break;
-                    // Left-Down
+                    // Sud Est
                     case "SE":
                         y--;
                         x++;
