@@ -5,6 +5,8 @@ namespace Mots_meles
 	{
         private Joueur[] tab_joueurs;
         private string langue_dic;
+        private int diff;
+        private Plateau plateau;
 		public Jeu()
 		{
 
@@ -12,8 +14,10 @@ namespace Mots_meles
             string nom_temp = null;
 
             //Affichage menu + saisie des caractéristiques des joueurs 
-            Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n");
             int nb_joueur;
+            diff = 0; //remise à 0 de la difficulté
+
+            Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n");
             do
             {
                 Console.WriteLine("\nInserer le nombre de joueurs ");
@@ -22,22 +26,30 @@ namespace Mots_meles
 
             tab_joueurs = new Joueur[nb_joueur];
 
-            Console.WriteLine("Vous avez selectionne " + nb_joueur + " joueurs");
 
             for (int i = 0; i < nb_joueur; i++) //remplissage du tableau de joueur
             {
                 Console.WriteLine("\nSaisir le nom du joueur " + (i + 1));
 
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
-                Console.WriteLine(tab_joueurs[i].ToString());
             }
 
-            Console.WriteLine("Saisir une langue : \nFR : Francais\nAN : Anglais"); //saisie de la langue du dico
+            Console.WriteLine("\nSaisir une langue : \nFR : Francais\nAN : Anglais"); //saisie de la langue du dico
             langue_dic = Console.ReadLine();
+
+            Console.WriteLine("NOMBRE DE JOUEURS : " + nb_joueur);
+            Console.WriteLine("LANGUE DU PLATEAU : " + langue_dic);
+
+            for (int i=0; i<nb_joueur; i++)
+            {
+                Console.WriteLine("\nJoueur " + i + "\n" + tab_joueurs[i].ToString());
+
+            }
 
 
             ///LANCEMENT D UNE PARTIE
             ///
+            //plateau = new Plateau(diff, langue_dic);
         }
     }
 }
