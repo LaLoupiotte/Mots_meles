@@ -172,7 +172,7 @@ namespace Mots_meles
         }
 
 
-        public static string[] ReadFile(string filePath, int )
+        public static string[] ReadFile(string filePath, int difficulte)
         {
 
             string[] lines = File.ReadAllLines(filePath);
@@ -180,6 +180,7 @@ namespace Mots_meles
             {
                 Console.WriteLine(line);
             }
+            return new string[] { "qsd", "sfg"};
         }
 
 
