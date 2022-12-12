@@ -1,19 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Mots_meles
-{
-    public class Plateau
-    {
-        private int difficulte;
-        private int nbColonnes;
-        private int nbLignes;
-        private string[] mots;
-        private char[,] tableau;
-
-
-
-        /*
+/*
          * 
          * 
         private string[,] matriceFromMots(string[] mots, int difficulte = 1)
@@ -84,15 +72,41 @@ namespace Mots_meles
          * 
          */
 
-        public Plateau()
+namespace Mots_meles
+{
+    public class Plateau
+    {
+        private int difficulte;
+        private string[] mots;
+        private char[,] grid;
+        private string langue;
+        private string[] directions;
+
+        public Plateau(int difficulte, string langue)
         {
             //Constructeur par default avec ces mots par defauts
             //On utilise se constructeur en tant que brouillon
-            string[] words = new string[] { "apple", "banana", "grapes", "strawberry", "orange", "mango", "kiwi", "plum", "pear", "apricot" };
-            string[] directions = new string[] { "N", "O", "S", "E", "SO", "SE", "NO", "NE" };
+            this.difficulte = difficulte;
+            this.langue = langue;
             int length = 13;
             int heigth = 7;
             char[,] grid = new char[heigth, length];
+
+            switch (difficulte)
+            {
+                case 1:
+                    this.directions = new string[] { "S", "O"};
+                    break;
+                case 2:
+                    this.directions = new string[] { "S", "O", "N", "E" };
+                    break;
+                case 3:
+                    this.directions = new string[] { "S", "O", "N", "E", "SO", "NE" };
+                    break;
+                case 4:
+                    this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
+                    break;
+            }
 
             // Initialise the grid with empty spaces
             for (int i = 0; i < heigth; i++)
@@ -105,7 +119,8 @@ namespace Mots_meles
 
             // Randomly insert words
             Random rnd = new Random();
-            for (int i = 0; i < heigth; i++)
+            int cont = 0;
+            while(cont < 10)
             {
                 string word = words[rnd.Next(0, 10)];
                 int x = rnd.Next(0, length);
@@ -113,11 +128,13 @@ namespace Mots_meles
                 int directionIndice = rnd.Next(0, 8);
 
                 // Check if the word fits in the grid
-                if (CheckWord(x, y, word, directions[directionIndice], grid, length, heigth))
+                if (CheckWord(x, y, word, this.directions[directionIndice], grid, length, heigth))
                 {
-                    InsertWord(x, y, word, directions[directionIndice], grid);
+                    InsertWord(x, y, word, this.directions[directionIndice], grid);
                     Console.WriteLine("Word '{0}' starts at {1}, {2} and goes {3}", word, x, y, directions[directionIndice]);
+                    cont += 1;
                 }
+
             }
 
             // Fill the empty spaces with random characters
@@ -153,38 +170,38 @@ namespace Mots_meles
                 grid[x, y] = char.ToUpper(word[i]);
                 switch (direction)
                 {
-                    // Left
+                    // Est
                     case "E":
                         y--;
                         break;
-                    // Left-Up
+                    // Nord Est
                     case "NE":
                         y--;
                         x--;
                         break;
-                    // Up
+                    // Nord
                     case "N":
                         x--;
                         break;
-                    // Right-Up
+                    // Nord Ouest
                     case "NO":
                         y++;
                         x--;
                         break;
-                    // Right
+                    // Ouest
                     case "O":
                         y++;
                         break;
-                    // Right-Down
+                    // Sud Ouest
                     case "SO":
                         y++;
                         x++;
                         break;
-                    // Down
+                    // Sud
                     case "S":
                         x++;
                         break;
-                    // Left-Down
+                    // Sud Est
                     case "SE":
                         y--;
                         x++;
@@ -207,38 +224,38 @@ namespace Mots_meles
                 }
                 switch (direction)
                 {
-                    // Left
+                    // Est
                     case "E":
                         y--;
                         break;
-                    // Left-Up
+                    // Nord Est
                     case "NE":
                         y--;
                         x--;
                         break;
-                    // Up
+                    // Nord
                     case "N":
                         x--;
                         break;
-                    // Right-Up
+                    // Nord Ouest
                     case "NO":
                         y++;
                         x--;
                         break;
-                    // Right
+                    // Ouest
                     case "O":
                         y++;
                         break;
-                    // Right-Down
+                    // Sud Ouest
                     case "SO":
                         y++;
                         x++;
                         break;
-                    // Down
+                    // Sud
                     case "S":
                         x++;
                         break;
-                    // Left-Down
+                    // Sud Est
                     case "SE":
                         y--;
                         x++;
