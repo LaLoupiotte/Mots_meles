@@ -24,3 +24,5 @@ D:\cours\A1\Algo\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.runtim
 D:\cours\A1\Algo\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.dll
 D:\cours\A1\Algo\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.pdb
 D:\cours\A1\Algo\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.genruntimeconfig.cache
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.dll
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.pdb
