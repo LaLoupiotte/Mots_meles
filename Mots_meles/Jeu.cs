@@ -29,14 +29,11 @@ namespace Mots_meles
                 Console.WriteLine("\nSaisir le nom du joueur " + (i + 1));
 
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
+                Console.WriteLine(tab_joueurs[i].ToString());
             }
 
-            do
-            {
-                Console.WriteLine("Saisir une langue : \nFR : Francais\nAN : Anglais"); //saisie de la langue du dico
-                langue_dic = Console.ReadLine();
-            } while (langue_dic != "FR" || langue_dic != "AN");
-
+            Console.WriteLine("Saisir une langue : \nFR : Francais\nAN : Anglais"); //saisie de la langue du dico
+            langue_dic = Console.ReadLine();
 
 
             ///LANCEMENT D UNE PARTIE
