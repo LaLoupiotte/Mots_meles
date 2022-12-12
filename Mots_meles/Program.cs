@@ -6,8 +6,8 @@ namespace Mots_meles
     {
         static void Main(string[] args)
         {
-            Jeu jeu = new Jeu();
-
+            //Jeu jeu = new Jeu();
+            Plateau plateau = new Plateau(1, "FR");
         }
     }
 }

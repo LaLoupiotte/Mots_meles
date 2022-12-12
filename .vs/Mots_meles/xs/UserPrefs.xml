@@ -1,19 +1,21 @@
 ﻿<Properties StartupConfiguration="{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}|Default">
   <MonoDevelop.Ide.ItemProperties.Mots__meles PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mots_meles/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../usr/local/share/dotnet/sdk/5.0.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets">
     <Files>
-      <File FileName="Mots_meles/Program.cs" Line="13" Column="35" />
-      <File FileName="Mots_meles/Joueur.cs" />
-      <File FileName="Mots_meles/Dictionnaire.cs" Line="25" Column="78" />
-      <File FileName="Mots_meles/Plateau.cs" Line="121" Column="31" />
+      <File FileName="Mots_meles/Program.cs" Line="8" Column="9" />
+      <File FileName="Mots_meles/Joueur.cs" Line="1" Column="1" />
+      <File FileName="Mots_meles/Dictionnaire.cs" Line="36" Column="11" />
+      <File FileName="Mots_meles/Plateau.cs" Line="180" Column="1" />
       <File FileName="Mots_meles/Jeu.cs" Line="1" Column="1" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/5.0.201/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" Line="241" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Mots_meles" expanded="True">
             <Node name="Mots_meles" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="wordFiles" expanded="True" />
+              <Node name="Joueur.cs" selected="True" />
             </Node>
           </Node>
         </State>

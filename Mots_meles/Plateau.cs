@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Collections;
 
 /*
          * 
@@ -89,6 +90,7 @@ namespace Mots_meles
         {
             this.difficulte = difficulte;
             this.langue = langue;
+            
             switch (difficulte)
             {
                 case 1:
@@ -130,11 +132,11 @@ namespace Mots_meles
             int cont = 0;
             while(cont < 10)
             {
-                string[] words = new string[] { "qhs fgo ", "qskjhflahkdf"};
-                string word = words[rnd.Next(0, 10)];
+                string[] words = ReadFile("../../../wordFiles/MotsPossiblesFR.txt", difficulte);
+                string word = words[rnd.Next(0, words.Length-1)];
                 int x = rnd.Next(0, width);
                 int y = rnd.Next(0, heigth);
-                int directionIndice = rnd.Next(0, 8);
+                int directionIndice = rnd.Next(0, directions.Length);
 
                 // Check if the word fits in the grid
                 if (CheckWord(x, y, word, this.directions[directionIndice], grid, width, heigth))
@@ -174,14 +176,38 @@ namespace Mots_meles
 
         public static string[] ReadFile(string filePath, int difficulte)
         {
-
-            string[] lines = File.ReadAllLines(filePath);
-            foreach (string line in lines)
+            bool flag = false;
+            ArrayList words = new ArrayList();
+            try
             {
-                Console.WriteLine(line);
+                string text = File.ReadAllText(filePath);
+                words.AddRange(text.Split(' '));
             }
-            return new string[] { "qsd", "sfg"};
+            catch (Exception e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+            int start = words.IndexOf(difficulte);
+            int end;
+            string[] wordsRes = new string[words.Count];
+            if(difficulte == 4)
+            {
+                end = words.Count - 1;
+            }
+            else
+            {
+                end = words.IndexOf(difficulte + 1);
+            }
+            for(int i = 0; i < words.Count; i++)
+            {
+                wordsRes[i] = (string)words[i];
+            }
+            
+            return wordsRes;
         }
+
+    
 
 
         public void InsertWord(int x, int y, string word, string direction, char[,] grid)
