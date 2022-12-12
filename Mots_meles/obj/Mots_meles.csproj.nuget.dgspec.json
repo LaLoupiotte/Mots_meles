@@ -14,7 +14,7 @@
         "outputPath": "/Users/guilhermemartins/Projects/Mots_meles/Mots_meles/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/guilhermemartins/.nuget/NuGet/NuGet.Config"
+          "/Users/guilhermemartins/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
