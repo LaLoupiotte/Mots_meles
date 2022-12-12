@@ -26,3 +26,15 @@ D:\cours\A1\Algo\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.pdb
 D:\cours\A1\Algo\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.genruntimeconfig.cache
 C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.dll
 C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.pdb
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.csproj.AssemblyReference.cache
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.AssemblyInfoInputs.cache
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.AssemblyInfo.cs
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.csproj.CoreCompileInputs.cache
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.exe
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.deps.json
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.runtimeconfig.json
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.runtimeconfig.dev.json
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.dll
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\bin\Debug\netcoreapp3.1\Mots_meles.pdb
+C:\Users\nurno\OneDrive\Documents\GitHub\Mots_meles\Mots_meles\obj\Debug\netcoreapp3.1\Mots_meles.genruntimeconfig.cache
