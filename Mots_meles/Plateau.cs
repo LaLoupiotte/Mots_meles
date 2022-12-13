@@ -272,11 +272,11 @@ namespace Mots_meles
                 {
                     // Est
                     case "E":
-                        colonne--;
+                        colonne++;
                         break;
                     // Nord Est
                     case "NE":
-                        colonne--;
+                        colonne++;
                         ligne--;
                         break;
                     // Nord
@@ -285,16 +285,16 @@ namespace Mots_meles
                         break;
                     // Nord Ouest
                     case "NO":
-                        colonne++;
+                        colonne--;
                         ligne--;
                         break;
                     // Ouest
                     case "O":
-                        colonne++;
+                        colonne--;
                         break;
                     // Sud Ouest
                     case "SO":
-                        colonne++;
+                        colonne--;
                         ligne++;
                         break;
                     // Sud
@@ -303,7 +303,7 @@ namespace Mots_meles
                         break;
                     // Sud Est
                     case "SE":
-                        colonne--;
+                        colonne++;
                         ligne++;
                         break;
                 }
@@ -355,6 +355,11 @@ namespace Mots_meles
                 Console.WriteLine();
             }
         }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 5f3b885fe29f36c0f6401debb44ca8f5002937cc
 
         public void AfficheGrille()
         {
@@ -367,5 +372,9 @@ namespace Mots_meles
                 Console.WriteLine();
             }
         }
+<<<<<<< HEAD
+>>>>>>> 5f3b885fe29f36c0f6401debb44ca8f5002937cc
+=======
+>>>>>>> 5f3b885fe29f36c0f6401debb44ca8f5002937cc
     }
 }
