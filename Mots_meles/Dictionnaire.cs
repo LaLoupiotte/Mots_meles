@@ -4,40 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Mots_meles
-
-/*
-        //IL FAUT TROUVER UN MOYEN DE NE PAS CHANGER LE TABLEAU THIS.DICO
-
-
-        //Test si le dictionnaire est vide
-        if(dico.Length == 0 || dico == null)
-        {
-            return false;
-        }
-        //Teste si le premier élement du tableau est le bon mot
-        else if(dico[0] == mot)
-        {
-            return true;
-        }
-        //Si ce n'est pas le bon mot on rappelle la fonction RechDichoRecursif
-        //avec le même tableau mais qui commence à l'indice un
-        else
-        {
-            //Création d'un nouveau dictionnaire commencant à l'indice un
-            string[] newDico = new string[dico.Length];
-            for(int i = 1; i < dico.Length; i++)
-            {
-                newDico[i - 1] = dico[i];
-            }
-            //On copie le nouveau tableau dans this.dico
-            dico = new string[newDico.Length];
-            for(int i = 0; i < newDico.Length; i++)
-            {
-                dico[0] = newDico[0];
-            }
-            return RechDichoRecursif(mot);
-        }
-        */
 {
     public class Dictionnaire
     {
@@ -70,28 +36,36 @@ namespace Mots_meles
             return res;
         }
 
-        public bool RechDichoRecursif(string mot, string dicoInit = null)
+        public bool RechDichoRecursif(string mot, List<string> liste = null, int depart=0, int fin=-1)
         {
+            //Attribue les valeurs par defaut pour liste et words
+            if(liste == null)
             {
-                if (mot == null || mot == "")
-                {
-                    return false;
-                }
-                int start = 0;
-                int end = this.words.Count - 1;
-                int middle;
-
-                while (start <= end)
-                {
-                    middle = (start + end) / 2;
-                    if (this.words[middle] == mot)
-                        return true;
-                    else if (string.Compare(mot, this.words[middle]) < 0)
-                        end = middle - 1;
-                    else
-                        start = middle + 1;
-                }
+                liste = words;
+                fin = words.Count - 1;
+            }
+            //On vérifie que le départ est bien inférieur à l'arrivée
+            if (depart > fin)
+            {
                 return false;
+            }
+            //Récupéartion de l'indice du milieu
+            int mid = (depart + fin) / 2;
+            //Si l'élement présent à l'indice mid dans la liste correspond au mot on retourne true
+            if (liste[mid] == mot)
+            {
+                return true;
+            }
+            //Si le mot se situe avant le compareTo vaudra -1
+            if (mot.CompareTo(liste[mid]) < 0)
+            {
+                //On rappelle la fonction mais la fin sera mid-1
+                return RechDichoRecursif(mot, liste, depart, mid - 1);
+            }
+            else
+            {
+                //On rappelle la fonction mais le début sera mid-1
+                return RechDichoRecursif(mot, liste, mid + 1, fin);
             }
         }
 

@@ -8,8 +8,8 @@ namespace Mots_meles
         {
 
             //Console.WriteLine("------_NEW_DEBUG_-------");
-            Plateau plat = new Plateau(2, "FR");
-            plat.AfficheGrille();
+            Dictionnaire dico = new Dictionnaire(3, "FR");
+            Console.WriteLine(dico.RechDichoRecursif("ACE"));
 
         }
     }
