@@ -358,7 +358,10 @@ namespace Mots_meles
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 5f3b885fe29f36c0f6401debb44ca8f5002937cc
 
         public void AfficheGrille()
         {
@@ -371,6 +374,9 @@ namespace Mots_meles
                 Console.WriteLine();
             }
         }
+<<<<<<< HEAD
+>>>>>>> 5f3b885fe29f36c0f6401debb44ca8f5002937cc
+=======
 >>>>>>> 5f3b885fe29f36c0f6401debb44ca8f5002937cc
     }
 }
