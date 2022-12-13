@@ -13,6 +13,7 @@ namespace Mots_meles
         private char[,] grid;
         private string langue;
         private string[] directions;
+        private string filename;
         private int width;
         private int nombreMots;
         private int heigth;
@@ -27,8 +28,17 @@ namespace Mots_meles
         {
             get { return this.motsAjoutes; }
         }
+
+        public Plateau(string filename)
+        {
+            //Ce constructeur permet de créer une instance de plateau en utilisant la fonction ToRead;
+            this.filename = filename;
+            ToRead(filename);
+        }
+
         public Plateau(int difficulte, string langue)
         {
+            //Ce constructeur est utilise quand on veut generer une grille en donnant une difficulte et une langue
             this.difficulte = difficulte;
             this.langue = langue;
             this.motsAjoutes = new List<string>();
@@ -89,6 +99,7 @@ namespace Mots_meles
             }
 
             GenereGrille();
+            ToFile("tableauDebug");
         }
         public void GenereGrille()
         {
@@ -100,7 +111,7 @@ namespace Mots_meles
                 string word = "";
                 //Choisit un mot, une position (x, y) et une direcetions aléatoire
                 //Le while nous permet de nes pas avoir un mot nul. Cela peut arriver si il y a un espace dans le fichier
-                while (word.Length < 1)
+                while (word.Length < 2)
                 {
                     word = words[rnd.Next(0, words.Count - 1)];
                 }
@@ -298,6 +309,51 @@ namespace Mots_meles
                 }
             }
             return res;
+        }
+
+        public void ToFile(string nomfile)
+        {
+            string res = "" + this.difficulte + ";" + this.heigth + ";" + this.width + ";" + this.motsAjoutes.Count+"\n";
+            for(int i = 0; i < this.motsAjoutes.Count-1; i++)
+            {
+                res+=motsAjoutes[i]+";";
+            }
+            res += motsAjoutes[motsAjoutes.Count - 1] + "\n";
+            for(int i = 0; i < grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < grid.GetLength(1)-1; j++)
+                {
+                    res+=grid[i,j] + ";";
+                }
+                res += grid[i, grid.GetLength(1) - 1] + "\n";
+            }
+            string path = "./tableau/" + nomfile +".csv";
+            File.WriteAllText(path, res);
+        }
+
+        public void ToRead(string nomfile)
+        {
+            string text = File.ReadAllText("./tableau/" + nomfile +".csv");
+            string[] lines = text.Split("\n");
+            string[] line1 = lines[0].Split(";");
+            this.difficulte = Convert.ToInt32(line1[0]);
+            this.heigth = Convert.ToInt32(line1[1]);
+            this.width = Convert.ToInt32(line1[2]);
+            this.nombreMots = Convert.ToInt32(line1[3]);
+            this.motsAjoutes = new List<string>();
+            this.motsAjoutes.AddRange(lines[1].Split(";"));
+            this.grid = new char[heigth, width];
+            Console.WriteLine(width + " " + heigth);
+            for(int i = 0; i < heigth; i++)
+            {
+                string[] lineTemp = lines[i + 2].Split(";");
+                for(int j = 0; j < width; j++)
+                {
+                    this.grid[i, j] = Convert.ToChar(lineTemp[j]);
+                    Console.Write(grid[i,j]);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
