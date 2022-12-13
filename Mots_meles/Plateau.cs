@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-
 namespace Mots_meles
 {
     public class Plateau
@@ -15,12 +14,10 @@ namespace Mots_meles
         private string[] directions;
         private int width;
         private int heigth;
-
         public char[,] Grid
         {
             get { return this.grid; }
         }
-
         public Plateau(int difficulte, string langue)
         {
             this.difficulte = difficulte;
@@ -33,7 +30,6 @@ namespace Mots_meles
                 //Ajout a la liste addrange de la liste words du dictionnaire correspodant à la longeur et a langue désirée
                 words.AddRange(new Dictionnaire(longeur, langue).Words);
             }
-
             //On fait une switch pour affecter le bon tableau a this.directions et une taille de plus en plus grande aux grille
             switch (difficulte)
             {
@@ -67,9 +63,6 @@ namespace Mots_meles
             }
             //Création de la graille avec la bonne hauteur et largeur
             this.grid = new char[this.heigth, this.width];
-
-
-
             //Initialisation de la grille avec des espaces vides
             for (int i = 0; i < heigth; i++)
             {
@@ -80,8 +73,19 @@ namespace Mots_meles
             }
 
             GenereGrille();
+            Console.Write("Saisir mot : ");
+            string mot = Console.ReadLine();
+            Console.Write("Saisir x : ");
+            int x = Int32.Parse(Console.ReadLine());
+            Console.Write("Saisir y : ");
+            int y = Int32.Parse(Console.ReadLine());
+            Console.Write("Saisir direction : ");
+            string direciton = Console.ReadLine();
+            Console.WriteLine(Test_Plateau(mot, x, y, direciton));
+
         }
-        public void GenereGrille() {
+        public void GenereGrille()
+        {
             // Randomly insert words
             Random rnd = new Random();
             int cont = 0;
@@ -111,12 +115,11 @@ namespace Mots_meles
                 {
                     if (grid[i, j] == ' ')
                     {
-                        grid[i, j] = char.ToUpper((char)rnd.Next(97, 123)); //Revoir lexplication de ca 
+                        grid[i, j] = (char)rnd.Next(97, 123); //Revoir lexplication de ca 
                     }
                 }
             }
         }
-
         public void Inserre(int x, int y, string word, string direction, char[,] grid)
         {
             //Boucle qui traite chaque charactere du mot
@@ -166,14 +169,13 @@ namespace Mots_meles
                 }
             }
         }
-
         public bool Disponible(int x, int y, string word, string direction, char[,] grid, int width, int height)
         {
             //Boucle qui traite chaque charactere du mot
             for (int i = 0; i < word.Length; i++)
             {
                 //Ce if nous permet de savoir si le mot rentre dans la grille
-                if (x < 0 || x > height-1 || y < 0 || y > width-1)
+                if (x < 0 || x > height - 1 || y < 0 || y > width - 1)
                 {
                     return false;
                 }
@@ -229,9 +231,9 @@ namespace Mots_meles
         }
         public bool Test_Plateau(string mot, int ligne, int colonne, string direction)
         {
-            
+
             bool res = true;
-            
+
 
             //Boucle qui traite chaque charactere du mot
             for (int i = 0; i < mot.Length; i++)
@@ -290,9 +292,5 @@ namespace Mots_meles
             return res;
         }
 
-        public void ToFile(string nomfile)
-        {
-
-        }
     }
 }
