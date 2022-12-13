@@ -78,6 +78,8 @@ namespace Mots_meles
                     grid[i, j] = ' ';
                 }
             }
+
+            GenereGrille();
         }
         public void GenereGrille() {
             // Randomly insert words
