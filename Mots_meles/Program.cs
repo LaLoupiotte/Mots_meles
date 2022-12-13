@@ -8,8 +8,10 @@ namespace Mots_meles
         {
 
             //Console.WriteLine("------_NEW_DEBUG_-------");
-            Plateau plat = new Plateau(2, "FR");
-            plat.AfficheGrille();
+           // Plateau plat = new Plateau(2, "FR");
+            //plat.AfficheGrille();
+
+            Jeu jeu = new Jeu();
 
         }
     }

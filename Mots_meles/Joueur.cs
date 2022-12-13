@@ -72,7 +72,7 @@ namespace Mots_meles
             /*Cette méthode utilise le tableau motsTrouvés pour en faire une chaine de caracteres,
             *elle a pour but d'être utilisée dans la méthode toString
             */
-            string res = "[";
+            string res = "[ ";
             for(int i = 0; i < motsTrouves.Length; i++)
             {
                 res += motsTrouves[i] + " ";

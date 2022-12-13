@@ -2,33 +2,34 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Reflection.Emit;
+using System.Threading;
 
 namespace Mots_meles
 {
 	public class Jeu
 	{
         private Joueur[] tab_joueurs;
-        private string langue_dic;
         private int diff;
         private Plateau plateau;
 		public Jeu()
 		{
-
             string langue_dic = null;
-            string nom_temp = null;
             string motSaisie;
             int ligne;
             int colonne;
             string direction;
-
-            //Affichage menu + saisie des caractéristiques des joueurs 
             int nb_joueur;
             diff = 4; //difficulté initialisé à la plus forte
+            int tempsSec = 20; //temps imparti de 1 minute
 
+
+            //Affichage menu + saisie des caractéristiques des joueurs 
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n" + "\nBienvenue dans ce mots meles Devinci !"); 
-            Console.WriteLine("Le but du jeu est de trouver tous les mots d'une grille dans le temps imparti ( min), en indiquant le mot, son sens de lecture, et sa position.");
-            Console.WriteLine("Pour plus de challenge, les grilles augmenteront de niveau a chaque tour :)");
-            do
+            Console.WriteLine("Le but du jeu est de trouver tous les mots d'une grille dans le temps imparti (1 min), en indiquant le mot, son sens de lecture, et sa position.");
+            Console.WriteLine("Pour plus de challenge, les grilles augmenteront de niveau a chaque tour !");
+            
+
+            do //blindage + saisie du nb de joueurs
             {
                 Console.WriteLine("\nInserer le nombre de joueurs");
                 nb_joueur = int.Parse(Console.ReadLine()); //saisie par le joueur du nb de joueurs
@@ -44,90 +45,118 @@ namespace Mots_meles
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
             }
 
-            Console.WriteLine("\nSaisir une langue : \nFR : Francais\nEN : Anglais"); //saisie de la langue du dico
-            langue_dic = Console.ReadLine();
+            do //blindage + saisie de la langue
+            {
+                Console.WriteLine("\nSaisir une langue : \nFR : Francais\nEN : Anglais"); //saisie de la langue du dico
+                langue_dic = Console.ReadLine();
+                langue_dic = langue_dic.ToUpper();
+            } while (Equals(langue_dic, "FR")!=true && Equals(langue_dic, "EN") != true);
 
-            Console.WriteLine("NOMBRE DE JOUEURS : " + nb_joueur);
+            Console.WriteLine("NOMBRE DE JOUEURS : " + nb_joueur); //affichage des infos saisies
             Console.WriteLine("LANGUE DU PLATEAU : " + langue_dic+"\n");
 
-            for (int i=0; i<nb_joueur; i++)
+            for (int i=0; i<nb_joueur; i++) //création du tableau de joueurs avec les pseudos respectifs
             {
                 Console.WriteLine("\nJOUEUR" + (i+1) + "\n" + tab_joueurs[i].ToString());
-
             }
 
-            Console.Clear();
+            Console.Clear(); //on supprime l'affichage courant
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n");
+
 
             ///LANCEMENT D UNE PARTIE
             
-
             for(int level=1; level<diff+1; level++) //boucle de tours
             {
-                for(int j=0; j<nb_joueur; j++) //boucle de joueurs
+                for(int j=0; j<nb_joueur; j++) //tours de joueurs
                 {
                     //déclarations
                     bool res = true;
                     string motEnMoins = null;
+                    DateTime startTime=DateTime.Now; //on initialise le chrono de départ à la minute à laquelle le chrono commence (now)
+
 
                     //affichage
                     Console.WriteLine("\n=-=-=-= Au tour de " + tab_joueurs[j].Nom + " =-=-=-=\n");
                     Console.WriteLine("Difficulte : " + level);
 
-                    plateau = new Plateau(level, langue_dic);
-                    char[,] grille = plateau.Grid;
-                    List<string> mots;
+                    plateau = new Plateau(level, langue_dic); //génération d'un nouveau plateau à la fin du tour 
+                    char[,] grille = plateau.Grid; //la grille du plateau est stockée dans le tableau "grille"
+                    List<string> mots; 
                     mots = plateau.MotsAjoutes; //liste des mots contenus dans la grille à trouver
-                   
-                    
+
+
                     ///DEBUT DU JEU
-                    //insérer le timer ici ----- les instructions après s'executent en boucle jusqu'a ce que le timer soit ecoule
-                    
-                    for (int h = 0; h < 3; h++) //test, à retirer et remplacer par timer
+
+                    while (true) //on boucle l'affichage de la grille + le jeu tant que le temps n'est pas écoulé
                     {
-                        Console.WriteLine("Score : " + tab_joueurs[j].Score);
-                        AffichagePlateau(grille, mots, level, langue_dic, motEnMoins);
+
+                        DateTime currentTime = DateTime.Now; 
+                        TimeSpan duree = currentTime.Subtract(startTime); //la différence entre le temps courant et le temps de départ est stocké dans "duration"
+
+                        Console.WriteLine("\nScore : " + tab_joueurs[j].Score); //affichage du score du joueur
+                        Console.WriteLine("Mots trouves : " + tab_joueurs[j].MotsTrouvesText());//affichage des mots trouves du joueur
+                        AffichagePlateau(grille, mots, level, langue_dic, motEnMoins); //affichage du plateau courant
 
                         Console.WriteLine("\nSaisir le mot trouve : ");
-                        motSaisie = Console.ReadLine();
-                        motSaisie = motSaisie.ToUpper();
-                        Console.WriteLine("Saisir la ligne : ");
-                        ligne = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Saisir la colonne : ");
-                        colonne = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Saisir la direction (N,S,E,O,NE,NO,SE,SO) : ");
-                        direction = Console.ReadLine();
+                        motSaisie = Console.ReadLine(); //saisie du mot trouvé
+                        motSaisie = motSaisie.ToUpper(); //mise en majuscule du mot trouvé
 
-                        res = plateau.Test_Plateau(motSaisie, ligne - 1, colonne - 1, direction);
-
-                        if (res == true)
+                        do 
                         {
-                            tab_joueurs[j].Score += motSaisie.Length;
+                            Console.WriteLine("Saisir la ligne : "); //blindage et saisie du numéro de la ligne
+                            ligne = int.Parse(Console.ReadLine());
+                        }while(ligne<0 && ligne>grille.GetLength(0));
+
+                        do
+                        {
+                            Console.WriteLine("Saisir la colonne : "); //blindage et saisie du numéro de la colonne
+                            colonne = int.Parse(Console.ReadLine());
+                        }while (colonne < 0 && colonne > grille.GetLength(1));
+
+                        do
+                        {
+                            Console.WriteLine("Saisir la direction (N,S,E,O,NE,NO,SE,SO) : "); //blindage et saisie de la direction
+                            direction = Console.ReadLine();
+                            direction = direction.ToUpper();
+                        } while (Equals(direction, "N") != true && Equals(direction, "S") != true && Equals(direction, "E") != true && Equals(direction, "O") != true && Equals(direction, "NE") != true && Equals(direction, "NO") != true && Equals(direction, "SE") != true && Equals(direction, "S0") != true);
+
+                        res = plateau.Test_Plateau(motSaisie, ligne - 1, colonne - 1, direction); //appell de la fonction de test
+
+                        if (duree.TotalSeconds <= tempsSec && res == true) //si la réponse est bonne et dans le temps imparti
+                        {
+                            tab_joueurs[j].Score += motSaisie.Length; //incrémentation du nb de lettre du mots trouvés dans le score
                             motEnMoins = motSaisie;
                             tab_joueurs[j].Add_Mot(motSaisie); //incrémentation du motSaisie dans les mots trouvés
                         }
-                        else if (res == false)
+                        else if (duree.TotalSeconds <= tempsSec && res == false) //si la saisie est fausse mais dans le temps impartie
                         {
-                            Console.WriteLine("Le mot n'est pas dans la grille!");
+                            Console.WriteLine("Le mot n'est pas dans la grille!"); //message d'erreur
                         }
-                        Console.Clear();
+                        else //le temps imparti est dépassé
+                        {
+                            break; //quitte la boucle
+                        }
+                        Console.Clear(); //reset l'affichage
                     }
-                    //fin du timer ici -------
-                    //afficher ca pendant 5 sec si possible, ou mettre dans la fonction timer avec 5 sec de + pour éviter de clear trop vite
-                    Console.WriteLine("Temps ecoule !");
-                    Console.WriteLine("Score : " + tab_joueurs[j].Score);
-                    Console.WriteLine("Mots trouves : " + tab_joueurs[j].MotsTrouvesText());
-
-
-
-
+                    Console.Clear();
                 }
             }
 
 
         }
 
-        
+        /*public void AffichageTimer()
+        {
+            int seconds = tempsSec;
+
+            for(int i=seconds; i>=0; i--)
+            {
+                Console.Write("\r{0} seconds remaining...", i);
+                Thread.Sleep(1000);
+            }
+
+        }*/
         public void AffichagePlateau(char[,] grille, List<string> mots, int level, string langue_disc, string motTrouve)
         {
             
@@ -144,7 +173,7 @@ namespace Mots_meles
             Console.WriteLine("\n");
 
             Console.Write("    "); //affichage indices + cadre brouillon
-            for(int i=0; i<grille.GetLength(0)-1; i++)
+            for(int i=0; i<grille.GetLength(0); i++)
             {
                 Console.Write(" " + (i+1) + " ");
             }
@@ -163,44 +192,5 @@ namespace Mots_meles
             }
         }
 
-
-
-        /* Affichage D'UN tableau
-        for (int i=0; i<grille.GetLength(0); i++)
-        {
-            for(int j=0; j < grille.GetLength(1); j++)
-            {
-                Console.Write(grille[i, j] + " ");
-            }
-        }*/
-
-        /*int cont = 0;
-        for(int i=0; i<grilles.Length; i++)
-        {
-            if (cont <= 4) { cont += 1; }
-            grilles[i] = new Plateau(cont, "EN").Grid;
-        }/*
-        /*
-        for(int i = 0; i<grilles.Length; i++)
-        {
-            for(int j = 0; j < grilles[i].GetLength(0); j++)
-            {
-
-                for(int k = 0; k < grilles[i].GetLength(1); k++)
-                {
-                    Console.Write(grilles[i][j, k]);
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine("-------------");
-        }*/
-
-        //AFFICHAGE LISTE DES MOTS
-        /*
-        Console.WriteLine("____");
-        foreach (string item in mots)
-        {
-            Console.WriteLine(item);
-        }*/
     }
 }
