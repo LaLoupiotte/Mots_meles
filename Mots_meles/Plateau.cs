@@ -80,16 +80,6 @@ namespace Mots_meles
             }
 
             GenereGrille();
-            Console.Write("Saisir mot : ");
-            string mot = Console.ReadLine();
-            Console.Write("Saisir x : ");
-            int x = Int32.Parse(Console.ReadLine());
-            Console.Write("Saisir y : ");
-            int y = Int32.Parse(Console.ReadLine());
-            Console.Write("Saisir direction : ");
-            string direciton = Console.ReadLine();
-            Console.WriteLine(Test_Plateau(mot, x, y, direciton));
-
         }
         public void GenereGrille() {
             // Randomly insert words
@@ -121,7 +111,7 @@ namespace Mots_meles
                 {
                     if (grid[i, j] == ' ')
                     {
-                        grid[i, j] = (char)rnd.Next(97, 123); //Revoir lexplication de ca 
+                        grid[i, j] = char.ToUpper((char)rnd.Next(97, 123)); //Revoir lexplication de ca 
                     }
                 }
             }
@@ -300,5 +290,9 @@ namespace Mots_meles
             return res;
         }
 
+        public void ToFile(string nomfile)
+        {
+
+        }
     }
 }
