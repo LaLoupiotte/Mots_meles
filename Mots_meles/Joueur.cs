@@ -7,6 +7,11 @@ namespace Mots_meles
         private int score;
         private string nom;
 
+
+        public string Nom
+        {
+            get { return this.nom; }
+        }
         public Joueur(string nom)
         {
             /*Ce constructeur est utilisé si le joueur vient de lancer la partie, la liste
