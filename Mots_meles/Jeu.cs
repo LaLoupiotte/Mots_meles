@@ -34,7 +34,7 @@ namespace Mots_meles
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
             }
 
-            Console.WriteLine("\nSaisir une langue : \nFR : Francais\nAN : Anglais"); //saisie de la langue du dico
+            Console.WriteLine("\nSaisir une langue : \nFR : Francais\nEN : Anglais"); //saisie de la langue du dico
             langue_dic = Console.ReadLine();
 
             Console.WriteLine("NOMBRE DE JOUEURS : " + nb_joueur);
@@ -51,6 +51,7 @@ namespace Mots_meles
             ///
             plateau = new Plateau(diff, langue_dic);
             char[,] grille = plateau.Grid;
+            string listeMots = plateau.MotAleat;
 
             char[][,] grilles = new char[5][,];
             int cont = 0;
@@ -61,9 +62,9 @@ namespace Mots_meles
             }
 
 
-            
+            Console.WriteLine(listeMots);
 
-            /*
+            
             for(int i = 0; i<grilles.Length; i++)
             {
                 for(int j = 0; j < grilles[i].GetLength(0); j++)
@@ -75,7 +76,7 @@ namespace Mots_meles
                     Console.WriteLine();
                 }
                 Console.WriteLine("-------------");
-            }*/
+            }
 
 
         }

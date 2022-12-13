@@ -15,10 +15,16 @@ namespace Mots_meles
         private string[] directions;
         private int width;
         private int heigth;
+        private string motAleat;
 
         public char[,] Grid
         {
             get { return this.grid; }
+        }
+
+        public string MotAleat
+        {
+            get { return this.motAleat; }
         }
 
         public Plateau(int difficulte, string langue)
@@ -65,7 +71,7 @@ namespace Mots_meles
                     this.width = 21;
                     break;
             }
-            //Création de la graille avec la bonne hauteur et largeur
+            //Création de la grille avec la bonne hauteur et largeur
             this.grid = new char[this.heigth, this.width];
 
 
@@ -102,6 +108,8 @@ namespace Mots_meles
                     Inserre(x, y, word, this.directions[directionIndice], grid);
                     Console.WriteLine("Word '{0}' starts at {1}, {2} and goes {3}", word, x, y, directions[directionIndice]);
                     cont += 1;
+
+                    motAleat += word + "\n";
                 }
             }
             //Remplir les espaces vides avec des characteres aléatoires
