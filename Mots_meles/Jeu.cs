@@ -45,12 +45,14 @@ namespace Mots_meles
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
             }
 
-            do //blindage + saisie de la langue
+            Console.WriteLine("\nSaisir une langue : \nFR : Francais\nEN : Anglais \nSi la saisie est mauvaise, le francais sera mis par defaut"); //saisie de la langue du dico
+            langue_dic = Console.ReadLine();
+            langue_dic = langue_dic.ToUpper();
+
+            if(Equals(langue_dic, "FR")!=true && Equals(langue_dic, "EN")!=true)
             {
-                Console.WriteLine("\nSaisir une langue : \nFR : Francais\nEN : Anglais"); //saisie de la langue du dico
-                langue_dic = Console.ReadLine();
-                langue_dic = langue_dic.ToUpper();
-            } while (Equals(langue_dic, "FR")!=true && Equals(langue_dic, "EN") != true);
+                langue_dic = "FR"; //la langue est automatiquement mise en français
+            }
 
             Console.WriteLine("NOMBRE DE JOUEURS : " + nb_joueur); //affichage des infos saisies
             Console.WriteLine("LANGUE DU PLATEAU : " + langue_dic+"\n");
@@ -90,7 +92,6 @@ namespace Mots_meles
 
                     while (true) //on boucle l'affichage de la grille + le jeu tant que le temps n'est pas écoulé
                     {
-
                         DateTime currentTime = DateTime.Now; 
                         TimeSpan duree = currentTime.Subtract(startTime); //la différence entre le temps courant et le temps de départ est stocké dans "duration"
 
@@ -120,6 +121,8 @@ namespace Mots_meles
                             direction = Console.ReadLine();
                             direction = direction.ToUpper();
                         } while (Equals(direction, "N") != true && Equals(direction, "S") != true && Equals(direction, "E") != true && Equals(direction, "O") != true && Equals(direction, "NE") != true && Equals(direction, "NO") != true && Equals(direction, "SE") != true && Equals(direction, "S0") != true);
+
+                        
 
                         res = plateau.Test_Plateau(motSaisie, ligne - 1, colonne - 1, direction); //appell de la fonction de test
 
