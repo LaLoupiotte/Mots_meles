@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}|Default">
   <MonoDevelop.Ide.ItemProperties.Mots__meles PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Mots_meles/bin/Debug/netcoreapp3.1/fichiersTexte/MotsPossiblesFR.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Mots_meles/Plateau.cs">
     <Files>
-      <File FileName="Mots_meles/Program.cs" Line="2" Column="1" />
-      <File FileName="Mots_meles/Dictionnaire.cs" Line="106" Column="53" />
-      <File FileName="Mots_meles/Plateau.cs" Line="95" Column="46" />
-      <File FileName="Mots_meles/Jeu.cs" />
-      <File FileName="Mots_meles/bin/Debug/netcoreapp3.1/fichiersTexte/MotsPossiblesFR.txt" Line="1" Column="2" />
+      <File FileName="Mots_meles/Program.cs" Line="12" Column="34" />
+      <File FileName="Mots_meles/Dictionnaire.cs" Line="93" Column="18" />
+      <File FileName="Mots_meles/Plateau.cs" Line="142" Column="80" />
+      <File FileName="Mots_meles/Jeu.cs" Line="1" Column="1" />
+      <File FileName="Mots_meles/bin/Debug/netcoreapp3.1/fichiersTexte/MotsPossiblesFR.txt" />
+      <File FileName="Mots_meles/Joueur.cs" Line="66" Column="48" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +17,7 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="FrameworkReferences" expanded="True" />
               </Node>
-              <Node name="Dictionnaire.cs" selected="True" />
+              <Node name="Plateau.cs" selected="True" />
             </Node>
           </Node>
         </State>
