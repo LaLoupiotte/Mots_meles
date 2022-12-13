@@ -7,7 +7,7 @@ namespace Mots_meles
         static void Main(string[] args)
         {
 
-            Console.WriteLine("------_NEW_DEBUG_-------");
+            //Console.WriteLine("------_NEW_DEBUG_-------");
             Jeu jeu = new Jeu();
 
         }
