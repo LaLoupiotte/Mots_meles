@@ -77,8 +77,9 @@ namespace Mots_meles
             int cont = 0;
             while (cont < 10)
             {
-                
+
                 string word = words[rnd.Next(0, words.Count-1)];
+                Console.WriteLine(word);
                 int x = rnd.Next(0, width);
                 int y = rnd.Next(0, heigth);
                 int directionIndice = rnd.Next(0, directions.Length);

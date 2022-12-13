@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oSoJWbL/wesJ1IQhJK9dPVy20YiO6Y7p64szribUFii9w1gjSDKxM3eZn+mzEkv9edoNkbx6mPPu6Bl69WcsEw==",
+  "dgSpecHash": "JaZ2s5bLV+l8y5Fc3YiZ43gseOKzwSGcxpYdhFsLDni5H0Ifp4CIAUxmdVKcSl/q1Cl81zffdmCyT0mdl6MmfA==",
   "success": true,
-  "projectFilePath": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\Mots_meles.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\gui26\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.29\\microsoft.netcore.app.host.win-x64.3.1.29.nupkg.sha512",
-    "C:\\Users\\gui26\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\gui26\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\gui26\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\Mots_meles.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
