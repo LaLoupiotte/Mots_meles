@@ -3,39 +3,35 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace Mots_meles
 {
     public class Plateau
     {
         private int difficulte;
-        private List<string> words;
         private char[,] grid;
         private string langue;
         private string[] directions;
         private int width;
+        private int nombreMots;
         private int heigth;
-<<<<<<< HEAD
-        private string motAleat;
-
-=======
->>>>>>> 8c4cd58837146c3afbffa95677d2b41f829e63a8
+        private List<string> words;
+        private List<string> motsAjoutes;
         public char[,] Grid
         {
             get { return this.grid; }
         }
-<<<<<<< HEAD
 
-        public string MotAleat
+        public List<string> MotsAjoutes
         {
-            get { return this.motAleat; }
+            get { return this.motsAjoutes; }
         }
-
-=======
->>>>>>> 8c4cd58837146c3afbffa95677d2b41f829e63a8
         public Plateau(int difficulte, string langue)
         {
             this.difficulte = difficulte;
             this.langue = langue;
+            this.motsAjoutes = new List<string>();
             //Création d'une collection liste qui va stocker tout les mots de la langue this.langue
             words = new List<string>();
             //La boucle va de 2 à 15 car cela correspond a la taille des différents mots. Ici on les veut tous
@@ -44,38 +40,44 @@ namespace Mots_meles
                 //Ajout a la liste addrange de la liste words du dictionnaire correspodant à la longeur et a langue désirée
                 words.AddRange(new Dictionnaire(longeur, langue).Words);
             }
+
             //On fait une switch pour affecter le bon tableau a this.directions et une taille de plus en plus grande aux grille
             switch (difficulte)
             {
                 case 1:
                     this.directions = new string[] { "S", "O" };
                     this.heigth = 7;
-                    this.width = 13;
+                    this.width = 6;
+                    nombreMots = 8;
                     break;
                 case 2:
                     this.directions = new string[] { "S", "O", "N", "E" };
                     this.heigth = 10;
-                    this.width = 16;
+                    this.width = 8;
+                    nombreMots = 13;
                     break;
                 case 3:
                     this.directions = new string[] { "S", "O", "N", "E", "SO", "NE" };
-                    this.heigth = 13;
-                    this.width = 18;
+                    this.heigth = 11;
+                    this.width = 10;
+                    nombreMots = 20;
                     break;
                 case 4:
                     this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
-                    this.heigth = 16;
-                    this.width = 21;
+                    this.heigth = 13;
+                    this.width = 13;
+                    nombreMots = 28;
                     break;
                 default:
                     //Par défaut nous avons décidé de mettre la valeur maximale même si ce cas la ne sera jamais traité 
                     //il permet d'éviter une erreur de compilation lors des test 
                     this.directions = new string[] { "S", "O", "N", "E", "SO", "NE", "NO", "SE" };
-                    this.heigth = 16;
-                    this.width = 21;
+                    this.heigth = 13;
+                    this.width = 13;
+                    nombreMots = 28;
                     break;
             }
-            //Création de la grille avec la bonne hauteur et largeur
+            //Création de la graille avec la bonne hauteur et largeur
             this.grid = new char[this.heigth, this.width];
             //Initialisation de la grille avec des espaces vides
             for (int i = 0; i < heigth; i++)
@@ -87,26 +89,21 @@ namespace Mots_meles
             }
 
             GenereGrille();
-            Console.Write("Saisir mot : ");
-            string mot = Console.ReadLine();
-            Console.Write("Saisir x : ");
-            int x = Int32.Parse(Console.ReadLine());
-            Console.Write("Saisir y : ");
-            int y = Int32.Parse(Console.ReadLine());
-            Console.Write("Saisir direction : ");
-            string direciton = Console.ReadLine();
-            Console.WriteLine(Test_Plateau(mot, x, y, direciton));
-
         }
         public void GenereGrille()
         {
             // Randomly insert words
             Random rnd = new Random();
             int cont = 0;
-            while (cont < 10)
+            while (this.motsAjoutes.Count < nombreMots)
             {
+                string word = "";
                 //Choisit un mot, une position (x, y) et une direcetions aléatoire
-                string word = words[rnd.Next(0, words.Count - 1)];
+                //Le while nous permet de nes pas avoir un mot nul. Cela peut arriver si il y a un espace dans le fichier
+                while (word.Length < 1)
+                {
+                    word = words[rnd.Next(0, words.Count - 1)];
+                }
                 int x = rnd.Next(0, width);
                 int y = rnd.Next(0, heigth);
                 //Ici on génère aléatoirement un nombre en fonction de la longeur du tableau directions car il change
@@ -118,10 +115,8 @@ namespace Mots_meles
                 {
                     //Si disponible alors on inserre le mot
                     Inserre(x, y, word, this.directions[directionIndice], grid);
-                    Console.WriteLine("Word '{0}' starts at {1}, {2} and goes {3}", word, x, y, directions[directionIndice]);
+                    motsAjoutes.Add(word);
                     cont += 1;
-
-                    motAleat += word + "\n";
                 }
             }
             //Remplir les espaces vides avec des characteres aléatoires
@@ -131,7 +126,7 @@ namespace Mots_meles
                 {
                     if (grid[i, j] == ' ')
                     {
-                        grid[i, j] = (char)rnd.Next(97, 123); //Revoir lexplication de ca 
+                        grid[i, j] = char.ToUpper((char)rnd.Next(97, 123)); //Revoir lexplication de ca 
                     }
                 }
             }
@@ -247,10 +242,7 @@ namespace Mots_meles
         }
         public bool Test_Plateau(string mot, int ligne, int colonne, string direction)
         {
-
             bool res = true;
-
-
             //Boucle qui traite chaque charactere du mot
             for (int i = 0; i < mot.Length; i++)
             {
@@ -307,6 +299,5 @@ namespace Mots_meles
             }
             return res;
         }
-
     }
 }
