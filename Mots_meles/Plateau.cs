@@ -80,6 +80,16 @@ namespace Mots_meles
             }
 
             GenereGrille();
+            Console.Write("Saisir mot : ");
+            string mot = Console.ReadLine();
+            Console.Write("Saisir x : ");
+            int x = Int32.Parse(Console.ReadLine());
+            Console.Write("Saisir y : ");
+            int y = Int32.Parse(Console.ReadLine());
+            Console.Write("Saisir direction : ");
+            string direciton = Console.ReadLine();
+            Console.WriteLine(Test_Plateau(mot, x, y, direciton));
+
         }
         public void GenereGrille() {
             // Randomly insert words
@@ -227,5 +237,68 @@ namespace Mots_meles
             }
             return true;
         }
+        public bool Test_Plateau(string mot, int ligne, int colonne, string direction)
+        {
+            
+            bool res = true;
+            
+
+            //Boucle qui traite chaque charactere du mot
+            for (int i = 0; i < mot.Length; i++)
+            {
+                //Ce if nous permet de savoir si le mot rentre dans la grille
+                if (ligne < 0 || ligne > this.grid.GetLength(0) - 1 || colonne < 0 || colonne > this.grid.GetLength(1) - 1)
+                {
+                    return false;
+                }
+                //Test si le charactere mot[i] correspond bien au charactere dans le grille ayant pour coordonées (x, y)
+                else if (grid[ligne, colonne] != mot[i])
+                {
+                    res = false;
+                }
+                //On fait un switch qui en fonction de la direction change les valeurs des coordonnées (x, y)
+                switch (direction)
+                {
+                    // Est
+                    case "E":
+                        colonne--;
+                        break;
+                    // Nord Est
+                    case "NE":
+                        colonne--;
+                        ligne--;
+                        break;
+                    // Nord
+                    case "N":
+                        ligne--;
+                        break;
+                    // Nord Ouest
+                    case "NO":
+                        colonne++;
+                        ligne--;
+                        break;
+                    // Ouest
+                    case "O":
+                        colonne++;
+                        break;
+                    // Sud Ouest
+                    case "SO":
+                        colonne++;
+                        ligne++;
+                        break;
+                    // Sud
+                    case "S":
+                        ligne++;
+                        break;
+                    // Sud Est
+                    case "SE":
+                        colonne--;
+                        ligne++;
+                        break;
+                }
+            }
+            return res;
+        }
+
     }
 }
