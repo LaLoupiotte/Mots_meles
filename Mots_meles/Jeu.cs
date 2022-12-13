@@ -60,6 +60,10 @@ namespace Mots_meles
                 grilles[i] = new Plateau(cont, "EN").Grid;
             }
 
+
+            
+
+            /*
             for(int i = 0; i<grilles.Length; i++)
             {
                 for(int j = 0; j < grilles[i].GetLength(0); j++)
@@ -71,7 +75,7 @@ namespace Mots_meles
                     Console.WriteLine();
                 }
                 Console.WriteLine("-------------");
-            }
+            }*/
 
 
         }
