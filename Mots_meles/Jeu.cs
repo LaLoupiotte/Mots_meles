@@ -22,7 +22,6 @@ namespace Mots_meles
             diff = 4; //difficulté initialisé à la plus forte
             int tempsSec = 20; //temps imparti de 1 minute
 
-
             //Affichage menu + saisie des caractéristiques des joueurs 
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n" + "\nBienvenue dans ce mots meles Devinci !"); 
             Console.WriteLine("Le but du jeu est de trouver tous les mots d'une grille dans le temps imparti (1 min), en indiquant le mot, son sens de lecture, et sa position.");

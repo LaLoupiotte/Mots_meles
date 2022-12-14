@@ -310,14 +310,19 @@ namespace Mots_meles
             return res;
         }
 
+        //Cette fonction enregistre le tableau dans un fichier
         public void ToFile(string nomfile)
         {
+            //On effectue la mise en page du fichier dans une string avant de l'enregistrer
+            //premiere ligne du fichier
             string res = "" + this.difficulte + ";" + this.heigth + ";" + this.width + ";" + this.motsAjoutes.Count+"\n";
+            //Ligne ou sont présents les mots à chercher
             for(int i = 0; i < this.motsAjoutes.Count-1; i++)
             {
                 res+=motsAjoutes[i]+";";
             }
             res += motsAjoutes[motsAjoutes.Count - 1] + "\n";
+            //On ajoute la grille
             for(int i = 0; i < grid.GetLength(0); i++)
             {
                 for (int j = 0; j < grid.GetLength(1)-1; j++)
@@ -327,34 +332,37 @@ namespace Mots_meles
                 res += grid[i, grid.GetLength(1) - 1] + "\n";
             }
             string path = "./tableau/" + nomfile +".csv";
+            //On enregistre la chaine de characteres dans le fichier
             File.WriteAllText(path, res);
         }
 
         public void ToRead(string nomfile)
         {
+            //Création d'une chaine de characteres avec le fichier nomfile
             string text = File.ReadAllText("./tableau/" + nomfile +".csv");
+            //On sépare le fichier entre chaque ligne
             string[] lines = text.Split("\n");
+            //On affecte la premiere en tant que tableau ou chaque element était séparer dans le fichier par un ;
             string[] line1 = lines[0].Split(";");
+            //On affecte les différentes valeurs en fonction de ce qui est présent dans ligne 1
             this.difficulte = Convert.ToInt32(line1[0]);
             this.heigth = Convert.ToInt32(line1[1]);
             this.width = Convert.ToInt32(line1[2]);
             this.nombreMots = Convert.ToInt32(line1[3]);
+            //Création et affectation de la liste motsAjoutés
             this.motsAjoutes = new List<string>();
             this.motsAjoutes.AddRange(lines[1].Split(";"));
             this.grid = new char[heigth, width];
-            Console.WriteLine(width + " " + heigth);
+            //Affectation de la grille
             for(int i = 0; i < heigth; i++)
             {
                 string[] lineTemp = lines[i + 2].Split(";");
                 for(int j = 0; j < width; j++)
                 {
                     this.grid[i, j] = Convert.ToChar(lineTemp[j]);
-                    Console.Write(grid[i,j]);
                 }
-                Console.WriteLine();
             }
         }
-
 
         public void AfficheGrille()
         {

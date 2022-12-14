@@ -27,7 +27,7 @@ namespace Mots_meles
             {
                 this.nom = nom;
                 this.score = 0;
-                this.motsTrouves = new string[0]; //!!!!!!!!revoir si on peut mettre un nul
+                this.motsTrouves = new string[0];
             }
             else
             {

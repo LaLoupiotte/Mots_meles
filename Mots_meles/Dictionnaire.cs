@@ -20,6 +20,7 @@ namespace Mots_meles
         {
             this.difficulte = difficulte;
             this.langue = langue;
+            //On appelle la fonction ReadFile afin d'avoir une liste avec tout les mots possibles
             if (langue == "EN")
             {
                 this.words = ReadFile("fichiersTexte/MotsPossiblesEN.txt", difficulte);
@@ -71,7 +72,9 @@ namespace Mots_meles
 
         public static List<string> ReadFile(string filePath, int difficulte)
         {
-            ArrayList lines = new ArrayList();
+            //Création d'une liste lignes
+            List<string> lines = new List<string>();
+            //On vérifie que le fichier existe bien
             try
             {
                 string text = File.ReadAllText(filePath);
@@ -80,11 +83,13 @@ namespace Mots_meles
             catch (Exception exe)
             {
                 Console.WriteLine("Erreur dans la lecture du fichier");
-                Console.WriteLine(exe.Message);
             }
+            //Création de la liste contenant tout les mots
             List<string> words = new List<string>();
             if (difficulte <= 15)
             {
+                //Cet entier correspond a ligne dans le fichier ou ce trouve la ligne correspondant a la difficulte
+                //Par exemple pour une difficulte 2, cela va correspondre à la liste de l'indice ou se trouve la ligne des mots de deux lettres
                 int lineOfDifficulte = (difficulte - 1) * 2 - 1;
                 string[] line = lines[lineOfDifficulte].ToString().Split(" ");
                 for (int j = 0; j < line.Length; j++)
