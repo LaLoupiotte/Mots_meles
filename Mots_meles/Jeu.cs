@@ -24,7 +24,8 @@ namespace Mots_meles
             string direction;
             int nb_joueur=0;
             diff = 4; //difficulté initialisé à la plus forte
-            int tempsSec = 5; //temps imparti de 1 minute
+            int tempsSec = 60; //temps imparti de 1 minute
+            plateauPrec = new List<List<Plateau>>();
 
             //Affichage menu + saisie des caractéristiques des joueurs 
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n" + "\nBienvenue dans ce mots meles Devinci !"); 
@@ -70,16 +71,19 @@ namespace Mots_meles
 
             ///LANCEMENT D UNE PARTIE
             
-            for(int level=4; level<diff+1; level++) //boucle de tours
+            for(int level=1; level<diff+1; level++) //boucle de tours
             {
                 for(int j=0; j<nb_joueur; j++) //tours de joueurs
                 {
+                    if (level == 1)
+                    {
+                        plateauPrec.Add(new List<Plateau>());
+                    }
                     //déclarations
                     bool res = true;
                     string motEnMoins = null;
                     DateTime startTime=DateTime.Now; //on initialise le chrono de départ à la minute à laquelle le chrono commence (now)
                     plateauCourant = null;
-                    plateauPrec = null;
                     
                     //affichage
                     Console.WriteLine("\n=-=-=-= Au tour de " + tab_joueurs[j].Nom + " =-=-=-=\n");
@@ -89,7 +93,8 @@ namespace Mots_meles
                     char[,] grille = plateau.Grid; //la grille du plateau est stockée dans le tableau "grille"
                     
                     plateauCourant = plateau; //le nouveau plateau généré est 
-                    plateauPrec[j].Add(plateauCourant);
+                    plateauPrec[j].Add(plateau);
+                    
 
                     List<string> mots; 
                     mots = plateau.MotsAjoutes; //liste des mots contenus dans la grille à trouver
