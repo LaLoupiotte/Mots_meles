@@ -12,6 +12,12 @@ namespace Mots_meles
         {
             get { return this.nom; }
         }
+
+        public int Score
+        {
+            get { return this.score; }
+            set { this.score = value; }
+        }
         public Joueur(string nom)
         {
             /*Ce constructeur est utilisé si le joueur vient de lancer la partie, la liste
@@ -66,10 +72,10 @@ namespace Mots_meles
             /*Cette méthode utilise le tableau motsTrouvés pour en faire une chaine de caracteres,
             *elle a pour but d'être utilisée dans la méthode toString
             */
-            string res = "[";
+            string res = "[ ";
             for(int i = 0; i < motsTrouves.Length; i++)
             {
-                res += motsTrouves[i] + ",";
+                res += motsTrouves[i] + " ";
             }
             res += "]";
             return res;

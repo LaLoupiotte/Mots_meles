@@ -1,9 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Mots_meles
 {
@@ -55,20 +53,20 @@ namespace Mots_meles
             {
                 case 1:
                     this.directions = new string[] { "S", "O" };
-                    this.heigth = 7;
-                    this.width = 6;
+                    this.heigth = 6;
+                    this.width = 7;
                     nombreMots = 8;
                     break;
                 case 2:
                     this.directions = new string[] { "S", "O", "N", "E" };
-                    this.heigth = 10;
-                    this.width = 8;
+                    this.heigth = 8;
+                    this.width = 10;
                     nombreMots = 13;
                     break;
                 case 3:
                     this.directions = new string[] { "S", "O", "N", "E", "SO", "NE" };
-                    this.heigth = 11;
-                    this.width = 10;
+                    this.heigth = 10;
+                    this.width = 11;
                     nombreMots = 20;
                     break;
                 case 4:
@@ -100,9 +98,10 @@ namespace Mots_meles
             GenereGrille();
             ToFile("tableauDebug");
         }
+
+        //Cette fonction genere une grille en placant les mots aléatoirement
         public void GenereGrille()
-        {
-            // Randomly insert words
+        { 
             Random rnd = new Random();
             int cont = 0;
             while (this.motsAjoutes.Count < nombreMots)
@@ -130,13 +129,14 @@ namespace Mots_meles
                 }
             }
             //Remplir les espaces vides avec des characteres aléatoires
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             for (int i = 0; i < heigth; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     if (grid[i, j] == ' ')
                     {
-                        grid[i, j] = char.ToUpper((char)rnd.Next(97, 123)); //Revoir lexplication de ca 
+                        grid[i, j] = alphabet[rnd.Next(0, alphabet.Length-1)]; 
                     }
                 }
             }
@@ -271,11 +271,11 @@ namespace Mots_meles
                 {
                     // Est
                     case "E":
-                        colonne--;
+                        colonne++;
                         break;
                     // Nord Est
                     case "NE":
-                        colonne--;
+                        colonne++;
                         ligne--;
                         break;
                     // Nord
@@ -284,16 +284,16 @@ namespace Mots_meles
                         break;
                     // Nord Ouest
                     case "NO":
-                        colonne++;
+                        colonne--;
                         ligne--;
                         break;
                     // Ouest
                     case "O":
-                        colonne++;
+                        colonne--;
                         break;
                     // Sud Ouest
                     case "SO":
-                        colonne++;
+                        colonne--;
                         ligne++;
                         break;
                     // Sud
@@ -302,7 +302,7 @@ namespace Mots_meles
                         break;
                     // Sud Est
                     case "SE":
-                        colonne--;
+                        colonne++;
                         ligne++;
                         break;
                 }
@@ -354,5 +354,19 @@ namespace Mots_meles
                 Console.WriteLine();
             }
         }
+
+
+        public void AfficheGrille()
+        {
+            for(int i = 0; i < heigth; i++)
+            {
+                for(int j = 0; j < width; j++)
+                {
+                    Console.Write(grid[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+
     }
 }
