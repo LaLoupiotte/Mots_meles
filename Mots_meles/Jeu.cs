@@ -13,7 +13,8 @@ namespace Mots_meles
         private int diff;
         private Plateau plateau;
         private Plateau plateauCourant;
-        private List<Plateau> plateauPrec;
+        private List<List<Plateau>> plateauPrec;
+
 		public Jeu()
 		{
             string langue_dic = null;
@@ -77,6 +78,8 @@ namespace Mots_meles
                     bool res = true;
                     string motEnMoins = null;
                     DateTime startTime=DateTime.Now; //on initialise le chrono de départ à la minute à laquelle le chrono commence (now)
+                    plateauCourant = null;
+                    plateauPrec = null;
                     
                     //affichage
                     Console.WriteLine("\n=-=-=-= Au tour de " + tab_joueurs[j].Nom + " =-=-=-=\n");
@@ -86,7 +89,7 @@ namespace Mots_meles
                     char[,] grille = plateau.Grid; //la grille du plateau est stockée dans le tableau "grille"
                     
                     plateauCourant = plateau; //le nouveau plateau généré est 
-                    plateauPrec.Add(plateauCourant);
+                    plateauPrec[j].Add(plateauCourant);
 
                     List<string> mots; 
                     mots = plateau.MotsAjoutes; //liste des mots contenus dans la grille à trouver

@@ -1,19 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-<<<<<<< Updated upstream
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mots_meles", "Mots_meles\Mots_meles.csproj", "{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mots_melesTests", "Mots_melesTests\Mots_melesTests.csproj", "{5E04C7EE-F68B-4DB2-A9CF-E48601084EC4}"
-=======
-VisualStudioVersion = 17.3.32825.248
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mots_meles", "Mots_meles\Mots_meles.csproj", "{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mots_melesTests", "Mots_melesTests\Mots_melesTests.csproj", "{5E04C7EE-F68B-4DB2-A9CF-E48601084EC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{7C72851F-51E8-4284-97AD-BFE8A308A76F}"
->>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,17 +19,14 @@ Global
 		{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA5754BD-4660-4FA7-BE54-70B59A2EF4F0}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< Updated upstream
 		{5E04C7EE-F68B-4DB2-A9CF-E48601084EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E04C7EE-F68B-4DB2-A9CF-E48601084EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E04C7EE-F68B-4DB2-A9CF-E48601084EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E04C7EE-F68B-4DB2-A9CF-E48601084EC4}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{7C72851F-51E8-4284-97AD-BFE8A308A76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C72851F-51E8-4284-97AD-BFE8A308A76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C72851F-51E8-4284-97AD-BFE8A308A76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C72851F-51E8-4284-97AD-BFE8A308A76F}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
