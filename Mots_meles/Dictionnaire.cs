@@ -77,17 +77,25 @@ namespace Mots_meles
                 string text = File.ReadAllText(filePath);
                 lines.AddRange(text.Split('\n'));
             }
-            catch (Exception e)
+            catch (Exception exe)
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Erreur dans la lecture du fichier");
+                Console.WriteLine(exe.Message);
             }
-            int lineOfDifficulte = (difficulte-1)*2-1;
-            string[] line = lines[lineOfDifficulte ].ToString().Split(" ");
             List<string> words = new List<string>();
-            for (int j = 0; j < line.Length; j++)
+            if (difficulte <= 15)
             {
-                words.Add(line[j]);
+                int lineOfDifficulte = (difficulte - 1) * 2 - 1;
+                string[] line = lines[lineOfDifficulte].ToString().Split(" ");
+                for (int j = 0; j < line.Length; j++)
+                {
+                    words.Add(line[j]);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Erreur: la longeur maximale d'un mot est de 15 lettres");
+                return null;
             }
             return words;
         }

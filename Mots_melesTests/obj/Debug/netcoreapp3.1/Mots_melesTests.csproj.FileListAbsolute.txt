@@ -1,0 +1,6 @@
+D:\cours\A1\Algo\Mots_meles\Mots_melesTests\bin\Debug\netcoreapp3.1\CoverletSourceRootsMapping
+D:\cours\A1\Algo\Mots_meles\Mots_melesTests\obj\Debug\netcoreapp3.1\Mots_melesTests.csproj.AssemblyReference.cache
+D:\cours\A1\Algo\Mots_meles\Mots_melesTests\obj\Debug\netcoreapp3.1\Mots_melesTests.GeneratedMSBuildEditorConfig.editorconfig
+D:\cours\A1\Algo\Mots_meles\Mots_melesTests\obj\Debug\netcoreapp3.1\Mots_melesTests.AssemblyInfoInputs.cache
+D:\cours\A1\Algo\Mots_meles\Mots_melesTests\obj\Debug\netcoreapp3.1\Mots_melesTests.AssemblyInfo.cs
+D:\cours\A1\Algo\Mots_meles\Mots_melesTests\obj\Debug\netcoreapp3.1\Mots_melesTests.csproj.CoreCompileInputs.cache
