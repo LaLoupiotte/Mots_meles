@@ -10,28 +10,24 @@ namespace Mots_meles.Tests
     public class JoueurTests
     {
 
-        [TestMethod()]
-        public void Add_MotTest()
-        {
-            Assert.Fail();
-        }
+        Joueur joueur1 = new Joueur("Ju");
 
         [TestMethod()]
         public void Add_ScoreTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(0, joueur1.Score);
         }
 
         [TestMethod()]
         public void MotsTrouvesTextTest()
         {
-            Assert.Fail();
+            Assert.AreEqual("[ ]", joueur1.MotsTrouvesText());
         }
 
         [TestMethod()]
         public void ToStringTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(joueur1.ToString(), "Nom : Ju\nScore : 0\nnMots trouvés : [ ]");
         }
     }
 }

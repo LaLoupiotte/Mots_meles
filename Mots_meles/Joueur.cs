@@ -18,6 +18,11 @@ namespace Mots_meles
             get { return this.score; }
             set { this.score = value; }
         }
+
+        public string[] MotsTrouves
+        {
+            get { return this.motsTrouves; }
+        }
         public Joueur(string nom)
         {
             /*Ce constructeur est utilisé si le joueur vient de lancer la partie, la liste
@@ -27,7 +32,7 @@ namespace Mots_meles
             {
                 this.nom = nom;
                 this.score = 0;
-                this.motsTrouves = new string[0]; //!!!!!!!!revoir si on peut mettre un nul
+                this.motsTrouves = new string[0];
             }
             else
             {
