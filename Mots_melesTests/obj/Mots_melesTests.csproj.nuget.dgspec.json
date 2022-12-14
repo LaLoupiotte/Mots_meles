@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj": {}
+    "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj": {}
   },
   "projects": {
-    "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj": {
+    "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj",
+        "projectUniqueName": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj",
         "projectName": "Mots_melesTests",
-        "projectPath": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj",
-        "packagesPath": "C:\\Users\\gui26\\.nuget\\packages\\",
-        "outputPath": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_melesTests\\obj\\",
+        "projectPath": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_melesTests\\Mots_melesTests.csproj",
+        "packagesPath": "C:\\Users\\nurno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_melesTests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gui26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nurno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\Mots_meles.csproj": {
-                "projectPath": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\Mots_meles.csproj"
+              "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\Mots_meles.csproj": {
+                "projectPath": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\Mots_meles.csproj"
               }
             }
           }
@@ -72,40 +77,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\Mots_meles.csproj": {
+    "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\Mots_meles.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\Mots_meles.csproj",
+        "projectUniqueName": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\Mots_meles.csproj",
         "projectName": "Mots_meles",
-        "projectPath": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\Mots_meles.csproj",
-        "packagesPath": "C:\\Users\\gui26\\.nuget\\packages\\",
-        "outputPath": "D:\\cours\\A1\\Algo\\Mots_meles\\Mots_meles\\obj\\",
+        "projectPath": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\Mots_meles.csproj",
+        "packagesPath": "C:\\Users\\nurno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nurno\\OneDrive\\Documents\\GitHub\\Mots_meles\\Mots_meles\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gui26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nurno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -113,6 +108,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -141,30 +137,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.29, 3.1.29]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
