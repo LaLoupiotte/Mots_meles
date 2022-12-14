@@ -14,7 +14,7 @@ namespace Mots_meles
         private Plateau plateau;
 
         private Plateau plateauCourant;
-        private List<Plateau> plateauPrec;
+        private List<List<Plateau>> plateauPrec;
 
 		public Jeu()
 		{
@@ -83,7 +83,7 @@ namespace Mots_meles
                     bool res = true;
                     string motEnMoins = null;
                     DateTime startTime=DateTime.Now; //on initialise le chrono de départ à la minute à laquelle le chrono commence (now)
-=======
+
                     plateauCourant = null;
                     
                     //affichage
@@ -92,19 +92,7 @@ namespace Mots_meles
 
                     plateau = new Plateau(level, langue_dic); //génération d'un nouveau plateau à la fin du tour 
                     char[,] grille = plateau.Grid; //la grille du plateau est stockée dans le tableau "grille"
-                    
-<<<<<<< HEAD
-                   /* plateauCourant = plateau; //le nouveau plateau généré est 
 
-                    if (plateauPrec[j]==null)
-                    {
-                        plateauPrec[j] = plateauCourant;
-                    }
-                    else
-                    {
-                        plateauPrec[j].Add(plateauCourant);
-                    }*/
-=======
                     plateauCourant = plateau; //le nouveau plateau généré est 
                     plateauPrec[j].Add(plateau);
                     
@@ -120,6 +108,7 @@ namespace Mots_meles
                         DateTime currentTime = DateTime.Now; 
                         TimeSpan duree = currentTime.Subtract(startTime); //la différence entre le temps courant et le temps de départ est stocké dans "duration"
                         int tempsRest = (int)duree.TotalSeconds;
+
                         Console.WriteLine("\nTemps ecoule : " + tempsRest + " secondes");
                         Console.WriteLine("\nScore : " + tab_joueurs[j].Score); //affichage du score du joueur
                         Console.WriteLine("Mots trouves : " + tab_joueurs[j].MotsTrouvesText());//affichage des mots trouves du joueur
