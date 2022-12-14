@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection.Emit;
-using System.Threading;
 
 namespace Mots_meles
 {
@@ -11,17 +12,18 @@ namespace Mots_meles
         private Joueur[] tab_joueurs;
         private int diff;
         private Plateau plateau;
+        private Plateau plateauCourant;
+        private List<Plateau> plateauPrec;
 		public Jeu()
 		{
             string langue_dic = null;
             string motSaisie;
-            int ligne;
-            int colonne;
+            int ligne=0;
+            int colonne=0;
             string direction;
-            int nb_joueur;
+            int nb_joueur=0;
             diff = 4; //difficulté initialisé à la plus forte
-            int tempsSec = 20; //temps imparti de 1 minute
-
+            int tempsSec = 5; //temps imparti de 1 minute
 
             //Affichage menu + saisie des caractéristiques des joueurs 
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n" + "\nBienvenue dans ce mots meles Devinci !"); 
@@ -32,16 +34,22 @@ namespace Mots_meles
             do //blindage + saisie du nb de joueurs
             {
                 Console.WriteLine("\nInserer le nombre de joueurs");
-                nb_joueur = int.Parse(Console.ReadLine()); //saisie par le joueur du nb de joueurs
-            }while (nb_joueur < 0 || nb_joueur == 0);
+                try
+                {
+                    nb_joueur=int.Parse(Console.ReadLine());
+                }
+                catch(FormatException) //blindage si la saisie n'est pas un entier
+                {
+                    Console.WriteLine("Erreur de saisie.");
+                }
+            }while (nb_joueur < 2); //si la saisie est un entier hors des bornes
 
-            tab_joueurs = new Joueur[nb_joueur];
+            tab_joueurs = new Joueur[nb_joueur]; //création du tableau de joueur avec une taille égale au nb de joueurs
 
 
             for (int i = 0; i < nb_joueur; i++) //remplissage du tableau de joueur
             {
                 Console.WriteLine("\nSaisir le nom du joueur " + (i + 1));
-
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
             }
 
@@ -51,16 +59,9 @@ namespace Mots_meles
 
             if(Equals(langue_dic, "FR")!=true && Equals(langue_dic, "EN")!=true)
             {
-                langue_dic = "FR"; //la langue est automatiquement mise en français
+                langue_dic = "FR"; //la langue est automatiquement mise en français si la saisie est incorrecte
             }
 
-            Console.WriteLine("NOMBRE DE JOUEURS : " + nb_joueur); //affichage des infos saisies
-            Console.WriteLine("LANGUE DU PLATEAU : " + langue_dic+"\n");
-
-            for (int i=0; i<nb_joueur; i++) //création du tableau de joueurs avec les pseudos respectifs
-            {
-                Console.WriteLine("\nJOUEUR" + (i+1) + "\n" + tab_joueurs[i].ToString());
-            }
 
             Console.Clear(); //on supprime l'affichage courant
             Console.WriteLine("=-=-=-=-=-= MOTS MELES DEVINCI =-=-=-=-=-=\n");
@@ -68,7 +69,7 @@ namespace Mots_meles
 
             ///LANCEMENT D UNE PARTIE
             
-            for(int level=1; level<diff+1; level++) //boucle de tours
+            for(int level=4; level<diff+1; level++) //boucle de tours
             {
                 for(int j=0; j<nb_joueur; j++) //tours de joueurs
                 {
@@ -76,14 +77,17 @@ namespace Mots_meles
                     bool res = true;
                     string motEnMoins = null;
                     DateTime startTime=DateTime.Now; //on initialise le chrono de départ à la minute à laquelle le chrono commence (now)
-
-
+                    
                     //affichage
                     Console.WriteLine("\n=-=-=-= Au tour de " + tab_joueurs[j].Nom + " =-=-=-=\n");
                     Console.WriteLine("Difficulte : " + level);
 
                     plateau = new Plateau(level, langue_dic); //génération d'un nouveau plateau à la fin du tour 
                     char[,] grille = plateau.Grid; //la grille du plateau est stockée dans le tableau "grille"
+                    
+                    plateauCourant = plateau; //le nouveau plateau généré est 
+                    plateauPrec.Add(plateauCourant);
+
                     List<string> mots; 
                     mots = plateau.MotsAjoutes; //liste des mots contenus dans la grille à trouver
 
@@ -106,14 +110,30 @@ namespace Mots_meles
                         do 
                         {
                             Console.WriteLine("Saisir la ligne : "); //blindage et saisie du numéro de la ligne
-                            ligne = int.Parse(Console.ReadLine());
+                            try
+                            {
+                                ligne = int.Parse(Console.ReadLine());
+                            }
+                            catch(FormatException)
+                            {
+                                Console.WriteLine("Erreur de saisie ! ");
+                            }
                         }while(ligne<0 && ligne>grille.GetLength(0));
 
                         do
                         {
                             Console.WriteLine("Saisir la colonne : "); //blindage et saisie du numéro de la colonne
-                            colonne = int.Parse(Console.ReadLine());
-                        }while (colonne < 0 && colonne > grille.GetLength(1));
+                            try
+                            {
+                                colonne = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Erreur de saisie ! ");
+                            }
+                        } while (colonne < 0 && colonne > grille.GetLength(1));
+
+                        
 
                         do
                         {
@@ -175,16 +195,31 @@ namespace Mots_meles
             }
             Console.WriteLine("\n");
 
-            Console.Write("    "); //affichage indices + cadre brouillon
-            for(int i=0; i<grille.GetLength(0); i++)
+            Console.Write("     "); //affichage indices + cadre brouillon
+            for(int i=0; i<grille.GetLength(1); i++)
             {
-                Console.Write(" " + (i+1) + " ");
+                if ((i + 1) > 9) //gestion de l'espace d'affichage pour les nb à 2 chiffres
+                {
+                    Console.Write(" " + (i + 1));
+                }
+                else
+                {
+                    Console.Write(" " + (i + 1) + " ");
+                }
             }
+
             Console.WriteLine();
 
             for (int i = 0; i < grille.GetLength(0); i++) //affichage de la grille
             {
-                Console.Write(" " + (i+1) + " | ");
+                if ((i + 1) > 9) //gestion de l'espace d'affichage 
+                {
+                    Console.Write(" " + (i + 1) + " | ");
+                }
+                else
+                {
+                    Console.Write(" " + (i + 1) + "  | ");
+                }
 
                 for (int k = 0; k < grille.GetLength(1); k++)
                 {
