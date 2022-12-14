@@ -50,7 +50,6 @@ namespace Mots_meles
                 //Ajout a la liste addrange de la liste words du dictionnaire correspodant à la longeur et a langue désirée
                 words.AddRange(new Dictionnaire(longeur, langue).Words);
             }
-
             //On fait une switch pour affecter le bon tableau a this.directions et une taille de plus en plus grande aux grille
             switch (difficulte)
             {
