@@ -7,7 +7,6 @@ namespace Mots_meles
         private int score;
         private string nom;
 
-
         public string Nom
         {
             get { return this.nom; }

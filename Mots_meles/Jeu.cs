@@ -10,9 +10,9 @@ namespace Mots_meles
 	public class Jeu
 	{
         private Joueur[] tab_joueurs;
-        private int diff;
+        private int difficulte;
         private Plateau plateau;
-
+        private Dictionnaire dictionnaire;
         private Plateau plateauCourant;
         private List<List<Plateau>> plateauPrec;
 
@@ -24,8 +24,8 @@ namespace Mots_meles
             int colonne=0;
             string direction;
             int nb_joueur=0;
-            diff = 4; //difficulté initialisé à la plus forte
-            int tempsSec = 60; //temps imparti de 1 minute
+            difficulte = 4; //difficulté initialisé à la plus forte
+            int tempsSec = 0; //temps imparti de 1 minute
             plateauPrec = new List<List<Plateau>>();
 
             //Affichage menu + saisie des caractéristiques des joueurs 
@@ -55,6 +55,20 @@ namespace Mots_meles
                 tab_joueurs[i] = new Joueur(Console.ReadLine());
             }
 
+            do
+            {
+                Console.WriteLine("\nSaisir le temps imparti en secondes : ");
+                try
+                {
+                    tempsSec = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Erreur de saisie.");
+                }
+            } while (tempsSec < 0 || tempsSec == 0);
+            
+
             Console.WriteLine("\nSaisir une langue : \nFR : Francais\nEN : Anglais \nSi la saisie est mauvaise, le francais sera mis par defaut"); //saisie de la langue du dico
             langue_dic = Console.ReadLine();
             langue_dic = langue_dic.ToUpper();
@@ -71,7 +85,7 @@ namespace Mots_meles
 
             ///LANCEMENT D UNE PARTIE
             
-            for(int level=1; level<diff+1; level++) //boucle de tours
+            for(int level=1; level<difficulte+1; level++) //boucle de tours
             {
                 for(int j=0; j<nb_joueur; j++) //tours de joueurs
                 {
